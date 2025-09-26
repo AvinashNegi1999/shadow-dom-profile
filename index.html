@@ -288,6 +288,61 @@
       transform: translateY(50px);
     }
 
+    /* Themed section backgrounds */
+    .bio-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .skills-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05));
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .skills-card::before {
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+    }
+
+    .anime-games-card {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(249, 115, 22, 0.05));
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+    .anime-games-card::before {
+      background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.3), transparent);
+    }
+
+    .books-card {
+      background: linear-gradient(135deg, rgba(180, 83, 9, 0.12), rgba(146, 64, 14, 0.08));
+      border: 1px solid rgba(180, 83, 9, 0.3);
+      position: relative;
+    }
+    .books-card::after {
+      content: '📚';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.1;
+    }
+    .books-card::before {
+      background: linear-gradient(90deg, transparent, rgba(180, 83, 9, 0.3), transparent);
+    }
+
+    .quote-card-section {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.08));
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    .quote-card-section::before {
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    }
+
+    .philosophy-card {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05));
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .philosophy-card::before {
+      background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+    }
+
     .section-card.visible {
       opacity: 1;
       transform: translateY(0);
@@ -408,11 +463,49 @@
       left: 100%;
     }
 
-    .tag:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
-      border-color: var(--primary);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    /* Themed section titles */
+    .bio-card .section-title { color: var(--primary); }
+    .skills-card .section-title { color: #10b981; }
+    .anime-games-card .section-title { color: #ec4899; }
+    .books-card .section-title { color: #b45309; }
+    .quote-card-section .section-title { color: #6366f1; }
+    .philosophy-card .section-title { color: #f59e0b; }
+
+    /* Themed tags */
+    .skills-card .tag {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .skills-card .tag:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.2));
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    }
+
+    .anime-games-card .tag {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(249, 115, 22, 0.1));
+      border: 1px solid rgba(236, 72, 153, 0.4);
+    }
+    .anime-games-card .tag:hover {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(249, 115, 22, 0.2));
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+    }
+
+    .books-card .tag {
+      background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(146, 64, 14, 0.15));
+      border: 1px solid rgba(180, 83, 9, 0.4);
+    }
+    .books-card .tag:hover {
+      background: linear-gradient(135deg, rgba(180, 83, 9, 0.3), rgba(146, 64, 14, 0.25));
+      box-shadow: 0 8px 25px rgba(180, 83, 9, 0.4);
+    }
+
+    .books-card .book-item {
+      background: rgba(180, 83, 9, 0.1);
+      border: 1px solid rgba(180, 83, 9, 0.2);
+    }
+    .books-card .book-item:hover {
+      background: rgba(180, 83, 9, 0.2);
+      border-color: rgba(180, 83, 9, 0.4);
     }
 
     .books-grid {
@@ -558,7 +651,7 @@
   </section>
 
   <main class="main-content">
-    <section class="section-card">
+    <section class="section-card bio-card">
       <div class="section-title">Bio</div>
       <div class="bio">
         Hello! I'm Avinash, a Pythonist and automation enthusiast exploring the world of ML/AI and full stack development. My curiosity drives me to experiment with everything from n8n AI agents to WordPress.org, and my next creative goal is to master 3D environments in Blender.<br><br>
@@ -566,7 +659,7 @@
       </div>
     </section>
 
-    <section class="section-card">
+    <section class="section-card skills-card">
       <div class="section-title">Skills & Interests</div>
       <div class="tags-container">
         <div class="tags-label">Main Skills:</div>
@@ -617,7 +710,7 @@
       </div>
     </section>
 
-    <section class="section-card">
+    <section class="section-card anime-games-card">
       <div class="section-title">Anime & Games</div>
       <div class="tags-container">
         <div class="tags-label">Favorite Anime (ranked):</div>
@@ -646,7 +739,7 @@
       </div>
     </section>
 
-    <section class="section-card">
+    <section class="section-card books-card">
       <div class="section-title">Books & Literature</div>
       <div class="tags-container">
         <div class="tags-label">Currently Reading:</div>
@@ -676,7 +769,7 @@
       </div>
     </section>
 
-    <section class="section-card">
+    <section class="section-card quote-card-section">
       <div class="section-title">Favorite Quote</div>
       <div class="quote-card">
         A man who lies to himself, and believes his own lies becomes unable to recognize truth, either in himself or in anyone else, and he ends up losing respect for himself and for others. <br><br>
@@ -685,7 +778,7 @@
       </div>
     </section>
 
-    <section class="section-card">
+    <section class="section-card philosophy-card">
       <div class="section-title">Personal Philosophy</div>
       <div class="motto-card">
         "To keep learning, creating, and still remain kind and humble."
