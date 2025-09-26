@@ -1,1927 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Dom - Ultimate Epic Experience</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent1: #ff6b6b;
-            --accent2: #ffd93d;
-            --accent3: #6bcf7f;
-            --accent4: #4ecdc4;
-            --accent5: #45b7d1;
-            --neon-pink: #ff0080;
-            --neon-cyan: #00ffff;
-            --neon-purple: #8000ff;
-            --dark-bg: #0a0a0a;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at center, #1a1a2e, #16213e, #0f3460);
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-            cursor: none;
-            position: relative;
-        }
-
-        /* Advanced animated background */
-        .mega-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -10;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255, 0, 128, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 70%, rgba(128, 0, 255, 0.3) 0%, transparent 50%),
-                linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
-            animation: megaBackground 20s ease infinite;
-        }
-
-        /* Matrix rain effect */
-        .matrix-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -5;
-            overflow: hidden;
-        }
-
-        .matrix-column {
-            position: absolute;
-            top: -100%;
-            color: var(--neon-cyan);
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
-            animation: matrixFall 10s linear infinite;
-            text-shadow: 0 0 10px var(--neon-cyan);
-            opacity: 0.7;
-        }
-
-        /* 3D Floating geometry */
-        .floating-geometry {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -3;
-        }
-
-        .geometry-shape {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--neon-pink);
-            animation: float3D 15s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px var(--neon-pink));
-            opacity: 0.6;
-        }
-
-        /* Holographic cursor */
-        .holographic-cursor {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            pointer-events: none;
-            z-index: 10000;
-            mix-blend-mode: screen;
-        }
-
-        .cursor-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--neon-cyan);
-            border-radius: 50%;
-            animation: pulseRing 2s ease infinite;
-            filter: blur(0.5px);
-        }
-
-        .cursor-dot {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 6px;
-            height: 6px;
-            background: var(--neon-pink);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px var(--neon-pink);
-        }
-
-        /* Epic particle system with trails */
-        .particle-system {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--neon-cyan);
-            border-radius: 50%;
-            box-shadow: 
-                0 0 10px var(--neon-cyan),
-                0 0 20px var(--neon-cyan),
-                0 0 30px var(--neon-cyan);
-            animation: particleTrail 20s linear infinite;
-        }
-
-        .particle:nth-child(2n) {
-            background: var(--neon-pink);
-            box-shadow: 
-                0 0 10px var(--neon-pink),
-                0 0 20px var(--neon-pink),
-                0 0 30px var(--neon-pink);
-            animation-delay: -5s;
-        }
-
-        .particle:nth-child(3n) {
-            background: var(--neon-purple);
-            box-shadow: 
-                0 0 10px var(--neon-purple),
-                0 0 20px var(--neon-purple),
-                0 0 30px var(--neon-purple);
-            animation-delay: -10s;
-        }
-
-        /* Holographic navigation */
-        .holo-nav {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            padding: 20px;
-            border-radius: 25px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 
-                0 0 30px rgba(0, 255, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .holo-btn {
-            width: 60px;
-            height: 60px;
-            border: none;
-            background: linear-gradient(45deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2));
-            color: var(--neon-cyan);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 
-                0 0 20px rgba(0, 255, 255, 0.3),
-                inset 0 0 20px rgba(0, 255, 255, 0.1);
-        }
-
-        .holo-btn:hover {
-            transform: scale(1.15) rotateY(180deg);
-            background: linear-gradient(45deg, rgba(255, 0, 128, 0.4), rgba(0, 255, 255, 0.4));
-            box-shadow: 
-                0 0 40px rgba(0, 255, 255, 0.6),
-                0 0 60px rgba(255, 0, 128, 0.4);
-            color: white;
-        }
-
-        .holo-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: rotate(45deg);
-            transition: transform 0.6s;
-            opacity: 0;
-        }
-
-        .holo-btn:hover::before {
-            transform: rotate(45deg) translate(100%, 100%);
-            opacity: 1;
-        }
-
-        /* Hero section with insane 3D effects */
-        .mega-hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            perspective: 2000px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-title {
-            font-size: clamp(4rem, 12vw, 12rem);
-            font-weight: 900;
-            background: linear-gradient(
-                45deg,
-                var(--neon-pink),
-                var(--neon-cyan),
-                var(--neon-purple),
-                var(--accent2),
-                var(--neon-pink)
-            );
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: 
-                epicTextGradient 4s ease infinite,
-                heroFloat 6s ease-in-out infinite,
-                textGlow 3s ease infinite;
-            letter-spacing: 0.15em;
-            transform-style: preserve-3d;
-            filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
-            position: relative;
-        }
-
-        .hero-title::before {
-            content: 'SHADOW DOM';
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(0, 255, 255, 0.8),
-                transparent
-            );
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: textScan 3s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 4vw, 2.5rem);
-            color: rgba(255, 255, 255, 0.9);
-            margin: 30px 0 50px;
-            animation: 
-                fadeInUp 2s ease 0.5s both,
-                subtitleGlow 4s ease infinite;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-        }
-
-        .mega-cta {
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
-            background-size: 200% 200%;
-            color: white;
-            border: none;
-            padding: 25px 50px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            animation: 
-                ctaPulse 3s ease infinite,
-                gradientShift 4s ease infinite;
-            box-shadow: 
-                0 15px 40px rgba(255, 0, 128, 0.4),
-                0 0 30px rgba(0, 255, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .mega-cta:hover {
-            transform: translateY(-8px) scale(1.05) rotateX(5deg);
-            box-shadow: 
-                0 25px 60px rgba(255, 0, 128, 0.6),
-                0 0 50px rgba(0, 255, 255, 0.5);
-        }
-
-        .mega-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: rotate(45deg) translate(-100%, -100%);
-            transition: transform 0.6s;
-        }
-
-        .mega-cta:hover::before {
-            transform: rotate(45deg) translate(100%, 100%);
-        }
-
-        /* Holographic profile card */
-        .holo-profile {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(30px);
-            border-radius: 40px;
-            padding: 60px;
-            margin: 150px auto;
-            max-width: 900px;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.5),
-                0 0 60px rgba(0, 255, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform-style: preserve-3d;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .holo-profile::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                var(--neon-pink), 
-                var(--neon-cyan), 
-                var(--neon-purple), 
-                var(--neon-pink)
-            );
-            background-size: 400% 400%;
-            border-radius: 40px;
-            z-index: -1;
-            animation: borderGlow 4s ease infinite;
-        }
-
-        .holo-profile:hover {
-            transform: rotateX(5deg) rotateY(5deg) translateZ(30px);
-            box-shadow: 
-                0 60px 120px rgba(0, 0, 0, 0.6),
-                0 0 80px rgba(0, 255, 255, 0.4);
-        }
-
-        /* Quantum skills galaxy */
-        .quantum-skills {
-            position: relative;
-            height: 600px;
-            margin: 100px 0;
-            perspective: 2000px;
-            overflow: hidden;
-        }
-
-        .quantum-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, var(--neon-cyan), var(--neon-purple));
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 
-                0 0 40px var(--neon-cyan),
-                0 0 80px var(--neon-purple),
-                inset 0 0 20px rgba(255, 255, 255, 0.2);
-            animation: quantumPulse 4s ease infinite;
-            z-index: 2;
-        }
-
-        .quantum-orbit {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: quantumSpin 20s linear infinite;
-        }
-
-        .quantum-orbit:nth-child(2) { 
-            width: 300px; height: 300px; 
-            margin: -150px 0 0 -150px;
-            animation-delay: -2s;
-        }
-        .quantum-orbit:nth-child(3) { 
-            width: 450px; height: 450px; 
-            margin: -225px 0 0 -225px;
-            animation-delay: -4s;
-            border-color: rgba(255, 0, 128, 0.3);
-        }
-        .quantum-orbit:nth-child(4) { 
-            width: 600px; height: 600px; 
-            margin: -300px 0 0 -300px;
-            animation-delay: -6s;
-            border-color: rgba(128, 0, 255, 0.3);
-        }
-
-        .quantum-skill {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, rgba(255, 0, 128, 0.8), rgba(0, 255, 255, 0.8));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(0, 255, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .quantum-skill:hover {
-            transform: scale(1.3) rotateY(180deg) translateZ(50px);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.6),
-                0 0 60px rgba(255, 0, 128, 0.6);
-            z-index: 10;
-        }
-
-        /* Holographic quote display */
-        .holo-quote {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(25px);
-            border-radius: 30px;
-            padding: 50px;
-            margin: 80px 0;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.4),
-                0 0 40px rgba(0, 255, 255, 0.1);
-        }
-
-        .holo-quote::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(0, 255, 255, 0.1), 
-                transparent
-            );
-            animation: holoScan 6s ease infinite;
-        }
-
-        .quote-text {
-            font-size: 1.8rem;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.9;
-            margin-bottom: 25px;
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-            font-weight: 300;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-author {
-            color: var(--neon-cyan);
-            font-weight: 600;
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px var(--neon-cyan);
-        }
-
-        /* Cyberpunk books grid */
-        .cyber-books {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 80px 0;
-            perspective: 1000px;
-        }
-
-        .cyber-book {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            cursor: pointer;
-            border: 2px solid rgba(0, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(0, 255, 255, 0.1);
-        }
-
-        .cyber-book::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(0, 255, 255, 0.3),
-                transparent
-            );
-            animation: bookSpin 8s linear infinite;
-            z-index: -1;
-        }
-
-        .cyber-book:hover {
-            transform: rotateY(15deg) rotateX(10deg) translateZ(50px);
-            background: rgba(0, 0, 0, 0.6);
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.6),
-                0 0 50px rgba(0, 255, 255, 0.3);
-            border-color: var(--neon-cyan);
-        }
-
-        .book-emoji {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: bookFloat 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px var(--neon-cyan));
-        }
-
-        .book-title {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Social constellation */
-        .social-constellation {
-            position: fixed;
-            bottom: 40px;
-            left: 40px;
-            z-index: 1000;
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-orb {
-            width: 70px;
-            height: 70px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--neon-cyan);
-            font-size: 1.8rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.4),
-                0 0 25px rgba(0, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-orb::before {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, var(--neon-cyan), transparent);
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .social-orb:hover {
-            transform: scale(1.2) rotateY(360deg);
-            background: rgba(0, 255, 255, 0.2);
-            box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.6),
-                0 0 40px var(--neon-cyan);
-            color: white;
-        }
-
-        .social-orb:hover::before {
-            opacity: 0.3;
-            top: -50%;
-            left: -50%;
-        }
-
-        /* Holographic music player */
-        .holo-music {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(25px);
-            border-radius: 25px;
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            z-index: 1000;
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .music-play {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .music-play::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .music-play:hover {
-            transform: scale(1.1) rotate(360deg);
-            box-shadow: 0 0 30px rgba(255, 0, 128, 0.6);
-        }
-
-        .music-play:hover::before {
-            width: 100%;
-            height: 100%;
-        }
-
-        .music-info {
-            color: white;
-            font-size: 1rem;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .volume-bar {
-            width: 100px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .volume-fill {
-            height: 100%;
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
-            border-radius: 3px;
-            width: 75%;
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px var(--neon-cyan);
-        }
-
-        /* Enhanced loading screen */
-        .quantum-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #1a1a2e, #0f0f0f);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        .quantum-loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-ring {
-            width: 120px;
-            height: 120px;
-            border: 4px solid rgba(0, 255, 255, 0.2);
-            border-top: 4px solid var(--neon-cyan);
-            border-right: 4px solid var(--neon-pink);
-            border-radius: 50%;
-            animation: quantumSpin 1s linear infinite;
-            position: relative;
-        }
-
-        .loader-ring::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 4px solid transparent;
-            border-top: 4px solid var(--neon-purple);
-            border-radius: 50%;
-            animation: quantumSpin 2s linear infinite reverse;
-        }
-
-        .loader-text {
-            color: var(--neon-cyan);
-            font-size: 1.8rem;
-            margin-top: 40px;
-            animation: textPulse 2s ease infinite;
-            text-shadow: 0 0 20px var(--neon-cyan);
-            font-weight: 300;
-            letter-spacing: 0.1em;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Animations */
-        @keyframes megaBackground {
-            0%, 100% { 
-                background-position: 0% 50%; 
-                filter: hue-rotate(0deg);
-            }
-            25% { 
-                background-position: 100% 0%; 
-                filter: hue-rotate(90deg);
-            }
-            50% { 
-                background-position: 100% 100%; 
-                filter: hue-rotate(180deg);
-            }
-            75% { 
-                background-position: 0% 100%; 
-                filter: hue-rotate(270deg);
-            }
-        }
-
-        @keyframes matrixFall {
-            0% {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
-
-        @keyframes float3D {
-            0%, 100% { 
-                transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
-                opacity: 0.6;
-            }
-            25% { 
-                transform: translate3d(100px, -50px, 100px) rotateX(90deg) rotateY(45deg);
-                opacity: 0.8;
-            }
-            50% { 
-                transform: translate3d(-50px, -100px, 50px) rotateX(180deg) rotateY(90deg);
-                opacity: 1;
-            }
-            75% { 
-                transform: translate3d(-100px, 50px, -50px) rotateX(270deg) rotateY(135deg);
-                opacity: 0.8;
-            }
-        }
-
-        @keyframes pulseRing {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        @keyframes particleTrail {
-            0% {
-                transform: translate3d(0, 100vh, 0) rotate(0deg);
-                opacity: 0;
-            }
-            5% { opacity: 1; }
-            95% { opacity: 1; }
-            100% {
-                transform: translate3d(200px, -100px, 200px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes epicTextGradient {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-        }
-
-        @keyframes textGlow {
-            0%, 100% { 
-                filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
-            }
-            50% { 
-                filter: drop-shadow(0 0 50px rgba(255, 0, 128, 0.8));
-            }
-        }
-
-        @keyframes textScan {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotateX(0deg) rotateZ(0deg);
-            }
-            25% { 
-                transform: translateY(-30px) rotateX(5deg) rotateZ(2deg);
-            }
-            50% { 
-                transform: translateY(0px) rotateX(0deg) rotateZ(0deg);
-            }
-            75% { 
-                transform: translateY(-15px) rotateX(-3deg) rotateZ(-1deg);
-            }
-        }
-
-        @keyframes subtitleGlow {
-            0%, 100% { 
-                text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            }
-            50% { 
-                text-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
-            }
-        }
-
-        @keyframes ctaPulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 
-                    0 15px 40px rgba(255, 0, 128, 0.4),
-                    0 0 30px rgba(0, 255, 255, 0.3);
-            }
-            50% { 
-                transform: scale(1.02);
-                box-shadow: 
-                    0 20px 50px rgba(255, 0, 128, 0.6),
-                    0 0 40px rgba(0, 255, 255, 0.5);
-            }
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes borderGlow {
-            0%, 100% { 
-                background-position: 0% 50%;
-                opacity: 0.8;
-            }
-            50% { 
-                background-position: 100% 50%;
-                opacity: 1;
-            }
-        }
-
-        @keyframes quantumPulse {
-            0%, 100% { 
-                transform: translate(-50%, -50%) scale(1);
-                box-shadow: 
-                    0 0 40px var(--neon-cyan),
-                    0 0 80px var(--neon-purple);
-            }
-            50% { 
-                transform: translate(-50%, -50%) scale(1.1);
-                box-shadow: 
-                    0 0 60px var(--neon-cyan),
-                    0 0 120px var(--neon-purple);
-            }
-        }
-
-        @keyframes quantumSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes holoScan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        @keyframes bookSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes bookFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotateZ(0deg);
-                filter: drop-shadow(0 0 20px var(--neon-cyan));
-            }
-            50% { 
-                transform: translateY(-15px) rotateZ(10deg);
-                filter: drop-shadow(0 0 30px var(--neon-pink));
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes textPulse {
-            0%, 100% { 
-                opacity: 0.7;
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 1;
-                transform: scale(1.05);
-            }
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .holo-nav {
-                top: 20px;
-                right: 20px;
-                padding: 15px;
-                gap: 15px;
-            }
-            
-            .holo-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .holo-profile {
-                padding: 40px 25px;
-                margin: 100px 20px;
-            }
-            
-            .quantum-skills {
-                height: 400px;
-            }
-            
-            .quantum-skill {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-            }
-            
-            .cyber-books {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
-            }
-            
-            .social-constellation {
-                bottom: 20px;
-                left: 20px;
-                gap: 15px;
-            }
-            
-            .social-orb {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-            
-            .holo-music {
-                bottom: 20px;
-                right: 20px;
-                padding: 15px 20px;
-                gap: 15px;
-            }
-            
-            .music-play {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            
-            .volume-bar {
-                width: 80px;
-            }
-            
-            .hero-title {
-                font-size: clamp(2.5rem, 10vw, 8rem);
-            }
-            
-            .hero-subtitle {
-                font-size: clamp(1rem, 3vw, 1.8rem);
-            }
-            
-            .mega-cta {
-                padding: 20px 35px;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px 15px;
-            }
-            
-            .holo-profile {
-                padding: 30px 20px;
-                margin: 80px 15px;
-            }
-            
-            .quantum-center {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .quantum-orbit:nth-child(2) { 
-                width: 200px; height: 200px; 
-                margin: -100px 0 0 -100px;
-            }
-            .quantum-orbit:nth-child(3) { 
-                width: 300px; height: 300px; 
-                margin: -150px 0 0 -150px;
-            }
-            .quantum-orbit:nth-child(4) { 
-                width: 400px; height: 400px; 
-                margin: -200px 0 0 -200px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avinash Negi | AI & Data Science Student</title>
+  <meta name="description" content="Personal profile of Avinash Negi, B.Tech AI & Data Science student at Amity University."/>
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/119884337?v=4"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
+  <style>
+    /* Animate background */
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      color: #23213a;
+      background: linear-gradient(120deg, #fed6e3 0%, #a8edea 100%);
+      background-size: 400% 400%;
+      animation: gradientMove 13s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.5s;
+    }
+    @keyframes gradientMove {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    .glass-card {
+      max-width: 450px;
+      width: 95vw;
+      background: rgba(255,255,255,0.20);
+      border-radius: 28px;
+      box-shadow: 0 8px 48px 0 rgba(123, 71, 255, 0.13), 0 2px 8px 0 rgba(80, 29, 160, 0.08);
+      padding: 44px 36px 36px 36px;
+      backdrop-filter: blur(17px);
+      border: 1.5px solid #ece8fbcc;
+      margin: 25px 0;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+    }
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .avatar-pulse {
+      position: absolute;
+      width: 126px;
+      height: 126px;
+      border-radius: 50%;
+      background: radial-gradient(rgba(123, 71, 255, 0.10), transparent 70%);
+      animation: pulseanim 2.3s infinite;
+      z-index: 1;
+    }
+    @keyframes pulseanim {
+      0% { transform: scale(1);}
+      70% { transform: scale(1.13);}
+      100% { transform: scale(1);}
+    }
+    .avatar-ring {
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7b47ff 55%, #fed6e3 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      z-index: 2;
+      box-shadow: 0 0 16px #b7aaff33;
+      position: relative;
+    }
+    .avatar {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      box-shadow: 0 0 0 4px #e8e6ff44, 0 2px 16px #7b47ff33;
+      background: #fff;
+      z-index: 3;
+    }
+    .name {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #7b47ff;
+      margin-bottom: 2px;
+      margin-top: 7px;
+    }
+    .subtitle {
+      font-size: 1.07rem;
+      color: #5e5a78;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .location {
+      font-size: 1.02rem;
+      color: #837dbd;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .links {
+      margin: 10px 0 18px 0;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0 6px 7px 6px;
+      color: #fff;
+      background: linear-gradient(90deg, #7b47ff 60%, #a8edea 100%);
+      padding: 7px 16px;
+      border-radius: 18px;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 1px 6px #b7aaff26;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      border: none;
+      outline: none;
+      letter-spacing: 0.02em;
+    }
+    .links a:hover {
+      background: linear-gradient(90deg, #a8edea 0%, #7b47ff 100%);
+      color: #7b47ff;
+      box-shadow: 0 2px 18px #7b47ff1c;
+    }
+    .section-title {
+      text-align: left;
+      color: #7b47ff;
+      margin: 28px 0 10px 0;
+      font-size: 1.18rem;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      border-left: 4px solid #7b47ff;
+      padding-left: 10px;
+      transition: color 0.2s;
+    }
+    .bio {
+      color: #3a3961;
+      font-size: 1.12rem;
+      margin: 0 0 14px 0;
+      font-style: italic;
+      line-height: 1.6;
+      text-align: left;
+      font-weight: 500;
+      background: rgba(168,237,234,0.08);
+      padding: 8px 14px 8px 14px;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+    ul, ol {
+      padding-left: 17px;
+      color: #333052;
+      font-size: 1.01rem;
+      margin: 0;
+      text-align: left;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin: 8px 0 4px 0;
+      list-style: none;
+      padding: 0;
+    }
+    .tag {
+      background: linear-gradient(90deg, #ece8fb 60%, #fef6f8 100%);
+      color: #7b47ff;
+      padding: 5px 13px;
+      border-radius: 12px;
+      font-size: 0.99rem;
+      font-weight: 600;
+      display: inline-block;
+      border: 1.5px solid #e4dcff;
+      box-shadow: 0 1px 3px #d7c9ff22;
+      letter-spacing: 0.01em;
+      margin-bottom: 2px;
+    }
+    .quotes {
+      background: linear-gradient(90deg, #f7f4ff 60%, #fef6f8 100%);
+      border-left: 3px solid #7b47ff;
+      padding: 6px 14px;
+      margin: 7px 0 7px 0;
+      color: #5e4b8b;
+      font-style: italic;
+      font-size: 1.01rem;
+      border-radius: 0 11px 11px 0;
+      display: block;
+      transition: background 0.2s;
+    }
+    .books-list {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+      gap: 0.5em;
+      margin: 0;
+      padding-left: 10px;
+      font-size: 0.97rem;
+    }
+    .books-list li {
+      margin-bottom: 3px;
+    }
+    .project-link {
+      color: #7b47ff;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.18s;
+    }
+    .project-link:hover { color: #23213a;}
+    .motto {
+      background: linear-gradient(90deg, #ece8fb 60%, #fef6f8 100%);
+      color: #5e4b8b;
+      border-left: 3px solid #7b47ff;
+      padding: 8px 14px;
+      border-radius: 0 9px 9px 0;
+      font-style: italic;
+      margin: 10px 0 0 0;
+      font-size: 1.04rem;
+      font-weight: 600;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    @media (max-width: 600px) {
+      .glass-card { padding: 10vw 2vw; }
+      .books-list { columns: 1; }
+      .name { font-size: 1.3rem; }
+      .avatar { width: 75px; height: 75px;}
+      .avatar-ring, .avatar-pulse { width: 84px; height: 84px;}
+    }
+    /* Subtle section fade-in effect */
+    .section-title, .bio, .tag-list, ul, .motto, .quotes {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInSection 1.3s forwards;
+    }
+    .section-title { animation-delay: 0.1s;}
+    .bio { animation-delay: 0.18s;}
+    .tag-list, ul { animation-delay: 0.26s;}
+    .motto { animation-delay: 0.38s;}
+    .quotes { animation-delay: 0.3s;}
+    @keyframes fadeInSection {
+      to { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Enhanced loading screen -->
-    <div class="quantum-loader" id="quantumLoader">
-        <div class="loader-ring"></div>
-        <div class="loader-text">Initializing Quantum Experience...</div>
+  <div class="glass-card">
+    <div class="avatar-wrap" style="position:relative;">
+      <span class="avatar-pulse"></span>
+      <span class="avatar-ring">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/119884337?v=4" alt="Avinash Negi's Avatar"/>
+      </span>
     </div>
-
-    <!-- Mega animated background -->
-    <div class="mega-background"></div>
-
-    <!-- Matrix rain effect -->
-    <div class="matrix-rain" id="matrixRain"></div>
-
-    <!-- 3D floating geometry -->
-    <div class="floating-geometry" id="floatingGeometry"></div>
-
-    <!-- Enhanced particle system -->
-    <div class="particle-system" id="particleSystem"></div>
-
-    <!-- Holographic cursor -->
-    <div class="holographic-cursor" id="holoCursor">
-        <div class="cursor-ring"></div>
-        <div class="cursor-dot"></div>
+    <div class="name">Avinash Negi</div>
+    <div class="subtitle">B.Tech AI & Data Science Student</div>
+    <div class="location">India · Amity University</div>
+    <div class="links">
+      <a href="https://linkedin.com/in/avinash-negi-ba5631223" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/AvinashNegi1999" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://kaggle.com/avinashnegi1999" target="_blank" rel="noopener">Kaggle</a>
+      <a href="https://x.com/AvinashNegiwork" target="_blank" rel="noopener">Twitter/X</a>
+      <a href="mailto:avinashnegi1999work@gmail.com">Email</a>
     </div>
-
-    <!-- Holographic navigation -->
-    <nav class="holo-nav">
-        <button class="holo-btn" onclick="scrollToSection('hero')" title="Home">
-            <i class="fas fa-home"></i>
-        </button>
-        <button class="holo-btn" onclick="scrollToSection('about')" title="About">
-            <i class="fas fa-user"></i>
-        </button>
-        <button class="holo-btn" onclick="scrollToSection('skills')" title="Skills">
-            <i class="fas fa-star"></i>
-        </button>
-        <button class="holo-btn" onclick="scrollToSection('books')" title="Books">
-            <i class="fas fa-book"></i>
-        </button>
-        <button class="holo-btn" onclick="toggleQuantumTheme()" title="Quantum Mode">
-            <i class="fas fa-atom"></i>
-        </button>
-    </nav>
-
-    <!-- Mega hero section -->
-    <section class="mega-hero" id="hero">
-        <h1 class="hero-title">SHADOW DOM</h1>
-        <p class="hero-subtitle">✨ Quantum Digital Universe Experience ✨</p>
-        <button class="mega-cta" onclick="initializeQuantumExperience()">
-            🚀 ENTER THE MATRIX
-        </button>
-    </section>
-
-    <div class="container">
-        <!-- Holographic profile card -->
-        <div class="holo-profile" id="about">
-            <h2 style="text-align: center; font-size: 3rem; color: var(--neon-cyan); margin-bottom: 40px; text-shadow: 0 0 30px var(--neon-cyan);">
-                🌟 Quantum Profile 🌟
-            </h2>
-            
-            <div style="text-align: center; font-size: 1.3rem; color: rgba(255, 255, 255, 0.95); line-height: 2; margin-bottom: 50px; text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);">
-                Greetings, digital traveler! I'm a <strong style="color: var(--neon-pink); text-shadow: 0 0 15px var(--neon-pink);">multidimensional being</strong> who exists in the intersection of 
-                <span style="color: var(--neon-cyan); text-shadow: 0 0 15px var(--neon-cyan);">K-drama passion</span> (My Mister = ❤️), 
-                <span style="color: var(--neon-purple); text-shadow: 0 0 15px var(--neon-purple);">strategic chess mastery</span>, 
-                and <strong style="color: var(--accent2); text-shadow: 0 0 15px var(--accent2);">literary exploration</strong>. 
-                Always ready to dive deep into conversations and share epic adventures with fellow cosmic travelers.
-            </div>
-
-            <!-- Enhanced interactive tags -->
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 50px;">
-                <span class="quantum-tag" style="background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan)); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);" 
-                onmouseover="this.style.transform='scale(1.15) rotateY(180deg)'; this.style.boxShadow='0 20px 50px rgba(255, 0, 128, 0.6)'" 
-                onmouseout="this.style.transform='scale(1) rotateY(0deg)'; this.style.boxShadow='0 10px 30px rgba(255, 0, 128, 0.3)'">
-                    ✨ K-Drama Connoisseur
-                </span>
-                <span class="quantum-tag" style="background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);" 
-                onmouseover="this.style.transform='scale(1.15) rotateY(-180deg)'; this.style.boxShadow='0 20px 50px rgba(0, 255, 255, 0.6)'" 
-                onmouseout="this.style.transform='scale(1) rotateY(0deg)'; this.style.boxShadow='0 10px 30px rgba(0, 255, 255, 0.3)'">
-                    ♟️ Chess Grandmaster
-                </span>
-                <span class="quantum-tag" style="background: linear-gradient(45deg, var(--neon-purple), var(--accent2)); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 30px rgba(128, 0, 255, 0.3); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);" 
-                onmouseover="this.style.transform='scale(1.15) rotateY(180deg)'; this.style.boxShadow='0 20px 50px rgba(128, 0, 255, 0.6)'" 
-                onmouseout="this.style.transform='scale(1) rotateY(0deg)'; this.style.boxShadow='0 10px 30px rgba(128, 0, 255, 0.3)'">
-                    📚 Literary Explorer
-                </span>
-                <span class="quantum-tag" style="background: linear-gradient(45deg, var(--accent3), var(--neon-pink)); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 30px rgba(107, 207, 127, 0.3); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);" 
-                onmouseover="this.style.transform='scale(1.15) rotateY(-180deg)'; this.style.boxShadow='0 20px 50px rgba(107, 207, 127, 0.6)'" 
-                onmouseout="this.style.transform='scale(1) rotateY(0deg)'; this.style.boxShadow='0 10px 30px rgba(107, 207, 127, 0.3)'">
-                    🎨 3D Visionary
-                </span>
-                <span class="quantum-tag" style="background: linear-gradient(45deg, var(--accent4), var(--neon-cyan)); color: white; padding: 15px 30px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);" 
-                onmouseover="this.style.transform='scale(1.15) rotateY(180deg)'; this.style.boxShadow='0 20px 50px rgba(78, 205, 196, 0.6)'" 
-                onmouseout="this.style.transform='scale(1) rotateY(0deg)'; this.style.boxShadow='0 10px 30px rgba(78, 205, 196, 0.3)'">
-                    🎶 Sonic Alchemist
-                </span>
-            </div>
-        </div>
-
-        <!-- Quantum skills galaxy -->
-        <section class="quantum-skills" id="skills">
-            <h2 style="text-align: center; font-size: 3.5rem; color: var(--neon-cyan); margin-bottom: 60px; text-shadow: 0 0 40px var(--neon-cyan); font-weight: 300; letter-spacing: 0.1em;">
-                🌌 Quantum Skills Galaxy
-            </h2>
-            <div class="quantum-center"></div>
-            <div class="quantum-orbit"></div>
-            <div class="quantum-orbit"></div>
-            <div class="quantum-orbit"></div>
-            <div class="quantum-skill" style="top: 20%; left: 20%;" title="K-Drama Universe Master">🎭</div>
-            <div class="quantum-skill" style="top: 15%; right: 25%;" title="Strategic Chess Mind">♟️</div>
-            <div class="quantum-skill" style="bottom: 25%; left: 15%;" title="Literary Dimension Walker">📚</div>
-            <div class="quantum-skill" style="bottom: 20%; right: 20%;" title="3D Reality Sculptor">🎨</div>
-            <div class="quantum-skill" style="top: 50%; left: 10%;" title="Sonic Wave Manipulator">🎵</div>
-            <div class="quantum-skill" style="top: 30%; right: 10%;" title="Digital Realm Navigator">💻</div>
-        </section>
-
-        <!-- Holographic quote display -->
-        <section class="holo-quote">
-            <h2 style="text-align: center; font-size: 3rem; color: var(--neon-pink); margin-bottom: 50px; text-shadow: 0 0 30px var(--neon-pink);">
-                💭 Quantum Wisdom Transmission
-            </h2>
-            <div class="quote-text" id="quantumQuote">
-                "In the intersection of drama, strategy, and imagination, we find the infinite possibilities of the human experience."
-            </div>
-            <div class="quote-author">— Shadow Dom, Digital Philosopher</div>
-        </section>
-
-        <!-- Cyberpunk books grid -->
-        <section class="cyber-books" id="books">
-            <h2 style="text-align: center; font-size: 3.5rem; color: var(--neon-purple); margin-bottom: 60px; text-shadow: 0 0 40px var(--neon-purple); grid-column: 1 / -1; font-weight: 300; letter-spacing: 0.1em;">
-                📚 Digital Library Matrix
-            </h2>
-            
-            <div class="cyber-book" onclick="bookQuantumEffect(this)">
-                <div class="book-emoji">📖</div>
-                <div class="book-title">Classic Literature</div>
-            </div>
-            <div class="cyber-book" onclick="bookQuantumEffect(this)">
-                <div class="book-emoji">🔬</div>
-                <div class="book-title">Science Fiction</div>
-            </div>
-            <div class="cyber-book" onclick="bookQuantumEffect(this)">
-                <div class="book-emoji">🧠</div>
-                <div class="book-title">Philosophy & Mind</div>
-            </div>
-            <div class="cyber-book" onclick="bookQuantumEffect(this)">
-                <div class="book-emoji">🌟</div>
-                <div class="book-title">Fantasy Realms</div>
-            </div>
-            <div class="cyber-book" onclick="bookQuantumEffect(this)">
-                <div class="book-emoji">🎭</div>
-                <div class="book-title">Drama & Theatre</div>
-            </div>
-            <div class="cyber-book" onclick="bookQuantumEffect(this)">
-                <div class="book-emoji">🚀</div>
-                <div class="book-title">Future Visions</div>
-            </div>
-        </section>
-
-        <!-- Interactive quantum elements -->
-        <section style="background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(25px); border-radius: 40px; padding: 60px; margin: 120px 0; text-align: center; position: relative; overflow: hidden; border: 2px solid rgba(0, 255, 255, 0.2); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);">
-            <h2 style="font-size: 3.5rem; color: var(--accent2); margin-bottom: 40px; animation: textGlow 3s ease infinite; text-shadow: 0 0 30px var(--accent2);">
-                🎮 Quantum Interactive Zone
-            </h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-                <button class="quantum-game" onclick="launchChessGame()" style="background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan)); color: white; border: none; padding: 25px 40px; border-radius: 25px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 15px 40px rgba(255, 0, 128, 0.4); text-transform: uppercase; letter-spacing: 0.05em;" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotateX(10deg)'; this.style.boxShadow='0 25px 60px rgba(255, 0, 128, 0.6)'" onmouseout="this.style.transform='translateY(0) scale(1) rotateX(0)'; this.style.boxShadow='0 15px 40px rgba(255, 0, 128, 0.4)'">
-                    ♟️ Quantum Chess
-                </button>
-                <button class="quantum-game" onclick="launchDramaQuiz()" style="background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)); color: white; border: none; padding: 25px 40px; border-radius: 25px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 15px 40px rgba(0, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotateX(10deg)'; this.style.boxShadow='0 25px 60px rgba(0, 255, 255, 0.6)'" onmouseout="this.style.transform='translateY(0) scale(1) rotateX(0)'; this.style.boxShadow='0 15px 40px rgba(0, 255, 255, 0.4)'">
-                    🎭 K-Drama Quiz
-                </button>
-                <button class="quantum-game" onclick="launchBookRecommendation()" style="background: linear-gradient(45deg, var(--neon-purple), var(--accent2)); color: white; border: none; padding: 25px 40px; border-radius: 25px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 15px 40px rgba(128, 0, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;" onmouseover="this.style.transform='translateY(-10px) scale(1.05) rotateX(10deg)'; this.style.boxShadow='0 25px 60px rgba(128, 0, 255, 0.6)'" onmouseout="this.style.transform='translateY(0) scale(1) rotateX(0)'; this.style.boxShadow='0 15px 40px rgba(128, 0, 255, 0.4)'">
-                    📚 Book Oracle
-                </button>
-            </div>
-        </section>
+    <div class="section-title">Bio</div>
+    <div class="bio">
+      Avinash Negi is a student pursuing AI &amp; Data Science with a strong focus on Python, Data Structures &amp; Algorithms, and Machine Learning. He is building a solid foundation in computer science while exploring literature, philosophy, and strategy games.
     </div>
-
-    <!-- Social constellation -->
-    <div class="social-constellation">
-        <div class="social-orb" onclick="socialQuantumEffect(this, 'github')" title="GitHub Dimension">
-            <i class="fab fa-github"></i>
-        </div>
-        <div class="social-orb" onclick="socialQuantumEffect(this, 'twitter')" title="Twitter Verse">
-            <i class="fab fa-twitter"></i>
-        </div>
-        <div class="social-orb" onclick="socialQuantumEffect(this, 'discord')" title="Discord Realm">
-            <i class="fab fa-discord"></i>
-        </div>
-        <div class="social-orb" onclick="socialQuantumEffect(this, 'email')" title="Email Portal">
-            <i class="fas fa-envelope"></i>
-        </div>
-    </div>
-
-    <!-- Holographic music player -->
-    <div class="holo-music">
-        <button class="music-play" onclick="toggleQuantumMusic()" id="musicBtn">
-            <i class="fas fa-play"></i>
-        </button>
-        <div class="music-info">
-            <div style="font-weight: 600;">Quantum Vibes</div>
-            <div style="font-size: 0.8rem; opacity: 0.8;">Synthwave Dreams</div>
-        </div>
-        <div class="volume-bar" onclick="adjustVolume(event)">
-            <div class="volume-fill" id="volumeFill"></div>
-        </div>
-    </div>
-
-    <script>
-        // Enhanced initialization
-        let isQuantumMode = false;
-        let musicPlaying = false;
-        let quantumParticles = [];
-        let matrixColumns = [];
-
-        // Initialize the quantum experience
-        function initializeQuantumExperience() {
-            setTimeout(() => {
-                document.getElementById('quantumLoader').classList.add('hidden');
-                createMatrixRain();
-                createFloatingGeometry();
-                createQuantumParticles();
-                initializeHolographicCursor();
-                startQuantumAnimations();
-            }, 2000);
-        }
-
-        // Matrix rain effect
-        function createMatrixRain() {
-            const matrixContainer = document.getElementById('matrixRain');
-            const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-            
-            for (let i = 0; i < 50; i++) {
-                const column = document.createElement('div');
-                column.className = 'matrix-column';
-                column.style.left = Math.random() * 100 + '%';
-                column.style.animationDelay = Math.random() * 10 + 's';
-                column.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                
-                let text = '';
-                for (let j = 0; j < 20; j++) {
-                    text += characters[Math.floor(Math.random() * characters.length)] + '\n';
-                }
-                column.textContent = text;
-                
-                matrixContainer.appendChild(column);
-            }
-        }
-
-        // 3D floating geometry
-        function createFloatingGeometry() {
-            const geometryContainer = document.getElementById('floatingGeometry');
-            const shapes = ['square', 'triangle', 'circle', 'diamond'];
-            
-            for (let i = 0; i < 30; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'geometry-shape';
-                shape.style.left = Math.random() * 100 + '%';
-                shape.style.top = Math.random() * 100 + '%';
-                shape.style.animationDelay = Math.random() * 15 + 's';
-                shape.style.animationDuration = (Math.random() * 20 + 10) + 's';
-                
-                const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
-                if (shapeType === 'triangle') {
-                    shape.style.borderRadius = '0';
-                    shape.style.transform = 'rotate(45deg)';
-                } else if (shapeType === 'circle') {
-                    shape.style.borderRadius = '50%';
-                } else if (shapeType === 'diamond') {
-                    shape.style.transform = 'rotate(45deg)';
-                }
-                
-                geometryContainer.appendChild(shape);
-            }
-        }
-
-        // Enhanced particle system
-        function createQuantumParticles() {
-            const particleContainer = document.getElementById('particleSystem');
-            
-            for (let i = 0; i < 100; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 25 + 15) + 's';
-                
-                // Random starting position for more dynamic effect
-                particle.style.transform = `translate3d(${Math.random() * 200 - 100}px, 100vh, ${Math.random() * 200}px)`;
-                
-                particleContainer.appendChild(particle);
-                quantumParticles.push(particle);
-            }
-        }
-
-        // Holographic cursor tracking
-        function initializeHolographicCursor() {
-            const cursor = document.getElementById('holoCursor');
-            
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 15 + 'px';
-                cursor.style.top = e.clientY - 15 + 'px';
-            });
-
-            document.addEventListener('mousedown', () => {
-                cursor.style.transform = 'scale(1.5)';
-                createCursorWave(event.clientX, event.clientY);
-            });
-
-            document.addEventListener('mouseup', () => {
-                cursor.style.transform = 'scale(1)';
-            });
-        }
-
-        // Create cursor wave effect
-        function createCursorWave(x, y) {
-            const wave = document.createElement('div');
-            wave.style.position = 'fixed';
-            wave.style.left = x - 25 + 'px';
-            wave.style.top = y - 25 + 'px';
-            wave.style.width = '50px';
-            wave.style.height = '50px';
-            wave.style.border = '2px solid var(--neon-cyan)';
-            wave.style.borderRadius = '50%';
-            wave.style.pointerEvents = 'none';
-            wave.style.zIndex = '9998';
-            wave.style.animation = 'pulseRing 1s ease-out';
-            
-            document.body.appendChild(wave);
-            
-            setTimeout(() => {
-                document.body.removeChild(wave);
-            }, 1000);
-        }
-
-        // Quantum animations controller
-        function startQuantumAnimations() {
-            setInterval(() => {
-                if (isQuantumMode) {
-                    document.documentElement.style.setProperty('--primary', '#' + Math.floor(Math.random()*16777215).toString(16));
-                    document.documentElement.style.setProperty('--secondary', '#' + Math.floor(Math.random()*16777215).toString(16));
-                }
-            }, 2000);
-        }
-
-        // Navigation functions
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            element.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
-            
-            // Add quantum effect to navigation
-            const navBtn = event.target.closest('.holo-btn');
-            navBtn.style.transform = 'scale(1.3) rotateY(720deg)';
-            setTimeout(() => {
-                navBtn.style.transform = 'scale(1) rotateY(0deg)';
-            }, 600);
-        }
-
-        // Toggle quantum theme mode
-        function toggleQuantumTheme() {
-            isQuantumMode = !isQuantumMode;
-            const body = document.body;
-            
-            if (isQuantumMode) {
-                body.style.background = 'radial-gradient(circle at center, #000000, #1a0033, #330066)';
-                body.style.animation = 'megaBackground 10s ease infinite';
-                
-                // Enhanced quantum effects
-                document.querySelectorAll('.quantum-tag').forEach(tag => {
-                    tag.style.animation = 'quantumPulse 2s ease infinite';
-                });
-                
-                showQuantumNotification('🌌 QUANTUM MODE ACTIVATED 🌌');
-            } else {
-                body.style.background = 'radial-gradient(circle at center, #1a1a2e, #16213e, #0f3460)';
-                body.style.animation = 'megaBackground 20s ease infinite';
-                
-                showQuantumNotification('✨ NORMAL MODE RESTORED ✨');
-            }
-        }
-
-        // Book quantum effect
-        function bookQuantumEffect(bookElement) {
-            bookElement.style.transform = 'rotateY(180deg) rotateX(15deg) translateZ(100px) scale(1.2)';
-            bookElement.style.background = 'linear-gradient(45deg, var(--neon-pink), var(--neon-cyan))';
-            bookElement.style.boxShadow = '0 50px 100px rgba(255, 0, 128, 0.8)';
-            
-            // Create reading effect
-            const readingEffect = document.createElement('div');
-            readingEffect.innerHTML = '📖 Quantum Reading Initiated...';
-            readingEffect.style.position = 'absolute';
-            readingEffect.style.top = '50%';
-            readingEffect.style.left = '50%';
-            readingEffect.style.transform = 'translate(-50%, -50%)';
-            readingEffect.style.color = 'white';
-            readingEffect.style.fontSize = '1rem';
-            readingEffect.style.fontWeight = 'bold';
-            readingEffect.style.textShadow = '0 0 20px var(--neon-cyan)';
-            readingEffect.style.zIndex = '10';
-            
-            bookElement.appendChild(readingEffect);
-            
-            setTimeout(() => {
-                bookElement.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0px) scale(1)';
-                bookElement.style.background = 'rgba(0, 0, 0, 0.4)';
-                bookElement.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
-                if (readingEffect) {
-                    bookElement.removeChild(readingEffect);
-                }
-            }, 2000);
-        }
-
-        // Social quantum effects
-        function socialQuantumEffect(orbElement, platform) {
-            orbElement.style.transform = 'scale(1.5) rotateY(720deg)';
-            orbElement.style.background = 'linear-gradient(45deg, var(--neon-pink), var(--neon-cyan))';
-            orbElement.style.boxShadow = '0 20px 60px rgba(255, 0, 128, 0.8)';
-            
-            // Create connection beam effect
-            const beam = document.createElement('div');
-            beam.style.position = 'fixed';
-            beam.style.bottom = '70px';
-            beam.style.left = '70px';
-            beam.style.width = '300px';
-            beam.style.height = '3px';
-            beam.style.background = 'linear-gradient(90deg, var(--neon-cyan), transparent)';
-            beam.style.animation = 'holoScan 1s ease';
-            beam.style.zIndex = '999';
-            
-            document.body.appendChild(beam);
-            
-            showQuantumNotification(`🚀 Connecting to ${platform.toUpperCase()} dimension...`);
-            
-            setTimeout(() => {
-                orbElement.style.transform = 'scale(1) rotateY(0deg)';
-                orbElement.style.background = 'rgba(0, 0, 0, 0.4)';
-                orbElement.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.4)';
-                document.body.removeChild(beam);
-            }, 1500);
-        }
-
-        // Interactive game functions
-        function launchChessGame() {
-            showQuantumNotification('♟️ Quantum Chess Matrix Loading...');
-            createQuantumModal(`
-                <div style="text-align: center; padding: 30px;">
-                    <h3 style="color: var(--neon-cyan); font-size: 2rem; margin-bottom: 20px;">♟️ Quantum Chess Challenge</h3>
-                    <div style="font-size: 1.2rem; color: white; margin-bottom: 30px;">
-                        Ready to play chess across multiple dimensions? 🌌<br>
-                        Choose your quantum strategy wisely!
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(8, 40px); gap: 2px; justify-content: center; margin: 20px 0;">
-                        ${Array.from({length: 64}, (_, i) => 
-                            `<div style="width: 40px; height: 40px; background: ${(Math.floor(i/8) + i) % 2 === 0 ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.4)'}; border: 1px solid var(--neon-cyan); display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="this.style.background='var(--neon-pink)'">${Math.random() > 0.8 ? ['♔','♕','♖','♗','♘','♙'][Math.floor(Math.random()*6)] : ''}</div>`
-                        ).join('')}
-                    </div>
-                    <button onclick="closeQuantumModal()" style="background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan)); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-weight: bold; cursor: pointer;">Start Quantum Game</button>
-                </div>
-            `);
-        }
-
-        function launchDramaQuiz() {
-            showQuantumNotification('🎭 K-Drama Universe Scanning...');
-            const dramas = ['My Mister', 'Hospital Playlist', 'Reply 1988', 'Goblin', 'Signal', 'Kingdom'];
-            const randomDrama = dramas[Math.floor(Math.random() * dramas.length)];
-            
-            createQuantumModal(`
-                <div style="text-align: center; padding: 30px;">
-                    <h3 style="color: var(--neon-pink); font-size: 2rem; margin-bottom: 20px;">🎭 K-Drama Quantum Quiz</h3>
-                    <div style="font-size: 1.2rem; color: white; margin-bottom: 30px;">
-                        The quantum algorithm has selected: <strong style="color: var(--neon-cyan);">${randomDrama}</strong> 🌟<br><br>
-                        This drama resonates with your soul frequency! ✨<br>
-                        Share your thoughts on this masterpiece?
-                    </div>
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <button onclick="showQuantumNotification('🏆 Excellent choice! You have refined taste!'); closeQuantumModal()" style="background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)); color: white; border: none; padding: 12px 25px; border-radius: 20px; cursor: pointer;">❤️ Love It!</button>
-                        <button onclick="showQuantumNotification('📺 Adding to quantum watchlist!'); closeQuantumModal()" style="background: linear-gradient(45deg, var(--neon-purple), var(--accent2)); color: white; border: none; padding: 12px 25px; border-radius: 20px; cursor: pointer;">📋 To Watch</button>
-                        <button onclick="showQuantumNotification('🤔 Interesting perspective! Everyone has different tastes.'); closeQuantumModal()" style="background: linear-gradient(45deg, var(--accent2), var(--neon-pink)); color: white; border: none; padding: 12px 25px; border-radius: 20px; cursor: pointer;">🤷 Not Sure</button>
-                    </div>
-                </div>
-            `);
-        }
-
-        function launchBookRecommendation() {
-            showQuantumNotification('📚 Book Oracle Consulting Quantum Library...');
-            const books = [
-                { title: 'Dune', genre: 'Sci-Fi Epic', reason: 'Complex world-building matches your strategic mind' },
-                { title: '1984', genre: 'Dystopian Classic', reason: 'Deep philosophical themes resonate with your depth' },
-                { title: 'The Alchemist', genre: 'Philosophical Fiction', reason: 'Journey of self-discovery aligns with your growth' },
-                { title: 'Neuromancer', genre: 'Cyberpunk', reason: 'Digital realm exploration matches your tech interests' },
-                { title: 'The Name of the Wind', genre: 'Fantasy', reason: 'Storytelling mastery appeals to your literary taste' }
-            ];
-            const randomBook = books[Math.floor(Math.random() * books.length)];
-            
-            createQuantumModal(`
-                <div style="text-align: center; padding: 30px;">
-                    <h3 style="color: var(--neon-purple); font-size: 2rem; margin-bottom: 20px;">📚 Quantum Book Oracle</h3>
-                    <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 20px; margin: 20px 0; border: 2px solid var(--neon-cyan);">
-                        <div style="font-size: 1.5rem; color: var(--neon-cyan); font-weight: bold; margin-bottom: 10px;">
-                            "${randomBook.title}"
-                        </div>
-                        <div style="color: var(--neon-pink); font-size: 1.1rem; margin-bottom: 15px;">
-                            Genre: ${randomBook.genre}
-                        </div>
-                        <div style="color: white; font-size: 1rem; line-height: 1.6;">
-                            🔮 Oracle says: ${randomBook.reason}
-                        </div>
-                    </div>
-                    <button onclick="showQuantumNotification('📖 Quantum bookmark created! Happy reading!'); closeQuantumModal()" style="background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan)); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin: 10px;">Add to Reading List</button>
-                    <button onclick="launchBookRecommendation()" style="background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple)); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; margin: 10px;">Get Another Recommendation</button>
-                </div>
-            `);
-        }
-
-        // Music player functions
-        function toggleQuantumMusic() {
-            const musicBtn = document.getElementById('musicBtn');
-            musicPlaying = !musicPlaying;
-            
-            if (musicPlaying) {
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                musicBtn.style.background = 'linear-gradient(45deg, var(--neon-cyan), var(--neon-purple))';
-                showQuantumNotification('🎵 Quantum Synthwave Activated');
-                
-                // Simulate music visualization
-                startMusicVisualization();
-            } else {
-                musicBtn.innerHTML = '<i class="fas fa-play"></i>';
-                musicBtn.style.background = 'linear-gradient(45deg, var(--neon-pink), var(--neon-cyan))';
-                showQuantumNotification('🎵 Music Paused');
-                stopMusicVisualization();
-            }
-        }
-
-        function adjustVolume(event) {
-            const volumeBar = event.currentTarget;
-            const volumeFill = document.getElementById('volumeFill');
-            const rect = volumeBar.getBoundingClientRect();
-            const percentage = ((event.clientX - rect.left) / rect.width) * 100;
-            
-            volumeFill.style.width = Math.max(0, Math.min(100, percentage)) + '%';
-            showQuantumNotification(`🔊 Volume: ${Math.round(percentage)}%`);
-        }
-
-        let musicVisualizationInterval;
-
-        function startMusicVisualization() {
-            // Create audio visualizer bars if they don't exist
-            if (!document.querySelector('.quantum-visualizer')) {
-                const visualizer = document.createElement('div');
-                visualizer.className = 'quantum-visualizer';
-                visualizer.style.position = 'fixed';
-                visualizer.style.bottom = '0';
-                visualizer.style.left = '0';
-                visualizer.style.width = '100%';
-                visualizer.style.height = '80px';
-                visualizer.style.display = 'flex';
-                visualizer.style.alignItems = 'end';
-                visualizer.style.gap = '3px';
-                visualizer.style.padding = '0 20px';
-                visualizer.style.pointerEvents = 'none';
-                visualizer.style.zIndex = '-1';
-                
-                for (let i = 0; i < 100; i++) {
-                    const bar = document.createElement('div');
-                    bar.style.width = '3px';
-                    bar.style.background = `linear-gradient(to top, var(--neon-pink), var(--neon-cyan))`;
-                    bar.style.borderRadius = '2px 2px 0 0';
-                    bar.style.transition = 'height 0.1s ease';
-                    bar.style.height = '10px';
-                    visualizer.appendChild(bar);
-                }
-                
-                document.body.appendChild(visualizer);
-            }
-            
-            const bars = document.querySelectorAll('.quantum-visualizer div');
-            musicVisualizationInterval = setInterval(() => {
-                bars.forEach(bar => {
-                    bar.style.height = (Math.random() * 60 + 10) + 'px';
-                });
-            }, 100);
-        }
-
-        function stopMusicVisualization() {
-            if (musicVisualizationInterval) {
-                clearInterval(musicVisualizationInterval);
-            }
-            
-            const visualizer = document.querySelector('.quantum-visualizer');
-            if (visualizer) {
-                visualizer.remove();
-            }
-        }
-
-        // Quantum notification system
-        function showQuantumNotification(message) {
-            const notification = document.createElement('div');
-            notification.innerHTML = message;
-            notification.style.position = 'fixed';
-            notification.style.top = '100px';
-            notification.style.left = '50%';
-            notification.style.transform = 'translateX(-50%) translateY(-50px)';
-            notification.style.background = 'rgba(0, 0, 0, 0.8)';
-            notification.style.backdropFilter = 'blur(20px)';
-            notification.style.color = 'white';
-            notification.style.padding = '20px 30px';
-            notification.style.borderRadius = '25px';
-            notification.style.border = '2px solid var(--neon-cyan)';
-            notification.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
-            notification.style.fontSize = '1.1rem';
-            notification.style.fontWeight = 'bold';
-            notification.style.textAlign = 'center';
-            notification.style.zIndex = '10001';
-            notification.style.animation = 'fadeInUp 0.5s ease, fadeInUp 0.5s ease 2.5s reverse forwards';
-            notification.style.textShadow = '0 0 15px var(--neon-cyan)';
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                if (document.body.contains(notification)) {
-                    document.body.removeChild(notification);
-                }
-            }, 3000);
-        }
-
-        // Quantum modal system
-        function createQuantumModal(content) {
-            const modal = document.createElement('div');
-            modal.id = 'quantumModal';
-            modal.style.position = 'fixed';
-            modal.style.top = '0';
-            modal.style.left = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.background = 'rgba(0, 0, 0, 0.8)';
-            modal.style.backdropFilter = 'blur(20px)';
-            modal.style.display = 'flex';
-            modal.style.justifyContent = 'center';
-            modal.style.alignItems = 'center';
-            modal.style.zIndex = '10002';
-            modal.style.animation = 'fadeInUp 0.5s ease';
-            
-            const modalContent = document.createElement('div');
-            modalContent.style.background = 'rgba(0, 0, 0, 0.9)';
-            modalContent.style.backdropFilter = 'blur(30px)';
-            modalContent.style.borderRadius = '30px';
-            modalContent.style.border = '2px solid var(--neon-cyan)';
-            modalContent.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.7)';
-            modalContent.style.maxWidth = '600px';
-            modalContent.style.maxHeight = '80vh';
-            modalContent.style.overflow = 'auto';
-            modalContent.style.position = 'relative';
-            
-            // Close button
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '✖';
-            closeBtn.style.position = 'absolute';
-            closeBtn.style.top = '15px';
-            closeBtn.style.right = '20px';
-            closeBtn.style.background = 'none';
-            closeBtn.style.border = 'none';
-            closeBtn.style.color = 'var(--neon-pink)';
-            closeBtn.style.fontSize = '1.5rem';
-            closeBtn.style.cursor = 'pointer';
-            closeBtn.style.zIndex = '1';
-            closeBtn.onclick = closeQuantumModal;
-            
-            modalContent.innerHTML = content;
-            modalContent.appendChild(closeBtn);
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-            
-            // Close on background click
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeQuantumModal();
-                }
-            });
-        }
-
-        function closeQuantumModal() {
-            const modal = document.getElementById('quantumModal');
-            if (modal) {
-                modal.style.animation = 'fadeInUp 0.3s ease reverse';
-                setTimeout(() => {
-                    if (document.body.contains(modal)) {
-                        document.body.removeChild(modal);
-                    }
-                }, 300);
-            }
-        }
-
-        // Quantum quote rotation
-        const quantumQuotes = [
-            "In the intersection of drama, strategy, and imagination, we find the infinite possibilities of the human experience.",
-            "Every K-drama teaches us that the most beautiful stories emerge from the depths of human connection.",
-            "Chess is not just a game; it's a meditation on the infinite complexity of choice and consequence.",
-            "Books are portals to parallel universes where every possibility exists simultaneously.",
-            "In the digital realm, we are all both player and observer in the quantum game of existence."
-        ];
-
-        function rotateQuantumQuote() {
-            const quoteElement = document.getElementById('quantumQuote');
-            const randomQuote = quantumQuotes[Math.floor(Math.random() * quantumQuotes.length)];
-            
-            quoteElement.style.animation = 'fadeInUp 0.5s ease reverse';
-            
-            setTimeout(() => {
-                quoteElement.textContent = randomQuote;
-                quoteElement.style.animation = 'fadeInUp 0.5s ease';
-            }, 500);
-        }
-
-        // Auto-rotate quotes every 10 seconds
-        setInterval(rotateQuantumQuote, 10000);
-
-        // Enhanced scroll effects
-        window.addEventListener('scroll', () => {
-            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            
-            // Dynamic background shift based on scroll
-            document.documentElement.style.setProperty('--scroll-shift', scrollPercent);
-            
-            // Parallax effect for floating elements
-            const floatingElements = document.querySelectorAll('.geometry-shape');
-            floatingElements.forEach((element, index) => {
-                const speed = 0.5 + (index % 3) * 0.2;
-                element.style.transform = `translateY(${scrollPercent * 100 * speed}px) rotate(${scrollPercent * 360}deg)`;
-            });
-        });
-
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeQuantumExperience();
-            
-            // Add some startup flair
-            setTimeout(() => {
-                showQuantumNotification('🌌 Welcome to the Shadow Dom Quantum Experience! 🌌');
-            }, 3000);
-        });
-
-        // Konami code easter egg
-        let konamiCode = [];
-        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
-
-        document.addEventListener('keydown', (e) => {
-            konamiCode.push(e.code);
-            if (konamiCode.length > konamiSequence.length) {
-                konamiCode.shift();
-            }
-            
-            if (konamiCode.join(',') === konamiSequence.join(',')) {
-                activateUltimateQuantumMode();
-                konamiCode = [];
-            }
-        });
-
-        function activateUltimateQuantumMode() {
-            showQuantumNotification('🚀 ULTIMATE QUANTUM MODE ACTIVATED! 🚀');
-            
-            document.body.style.animation = 'megaBackground 2s ease infinite';
-            
-            // Make everything extra sparkly
-            document.querySelectorAll('*').forEach(element => {
-                if (Math.random() > 0.7) {
-                    element.style.filter = 'drop-shadow(0 0 20px var(--neon-cyan)) saturate(2)';
-                    element.style.animation = 'quantumPulse 1s ease infinite';
-                }
-            });
-            
-            // Create rainbow particles
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    createRainbowParticle();
-                }, i * 100);
-            }
-        }
-
-        function createRainbowParticle() {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.top = '-10px';
-            particle.style.width = '10px';
-            particle.style.height = '10px';
-            particle.style.borderRadius = '50%';
-            particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            particle.style.boxShadow = `0 0 20px hsl(${Math.random() * 360}, 100%, 50%)`;
-            particle.style.zIndex = '9999';
-            particle.style.pointerEvents = 'none';
-            particle.style.animation = 'particleTrail 5s linear forwards';
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                if (document.body.contains(particle)) {
-                    document.body.removeChild(particle);
-                }
-            }, 5000);
-        }
-    </script>
+    <div class="section-title">Core Values</div>
+    <ul class="tag-list">
+      <li class="tag">Continuous learning</li>
+      <li class="tag">Discipline</li>
+      <li class="tag">Creativity</li>
+      <li class="tag">Long-term growth</li>
+    </ul>
+    <div class="section-title">Skills & Interests</div>
+    <ul>
+      <li><b>Main Skills:</b>
+        <span class="tag">Python</span>
+        <span class="tag">C</span>
+        <span class="tag">Beginner-level DSA</span>
+        <span class="tag">GitHub Projects</span>
+        <span class="tag">AI/ML Fundamentals</span>
+      </li>
+      <li><b>Languages/Tools:</b>
+        <span class="tag">Python</span>
+        <span class="tag">C</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Kaggle</span>
+        <span class="tag">Visual Studio</span>
+        <span class="tag">VS Code</span>
+      </li>
+      <li><b>Hobbies:</b>
+        <span class="tag">Chess</span>
+        <span class="tag">3D Animation</span>
+        <span class="tag">Creating Maps/Buildings</span>
+        <span class="tag">Watching K-dramas (<i>My Mister</i>)</span>
+      </li>
+    </ul>
+    <div class="section-title">Literary Interests</div>
+    <ul>
+      <li><b>Favorite Authors:</b>
+        <span class="tag">Franz Kafka</span>
+        <span class="tag">Fyodor Dostoevsky</span>
+        <span class="tag">George Orwell</span>
+      </li>
+      <li><b>Favorite Quotes:</b>
+        <div class="quotes">Kafka: “She was never mine, just my favorite illusion.”</div>
+        <div class="quotes">Dostoevsky: “Even illusions became real when she smiled.”</div>
+        <div class="quotes">Kafka: “I ran from love because I knew it would destroy me.”</div>
+        <div class="quotes">Dostoevsky: “I ran into love because I needed it to destroy who I used to be.”</div>
+        <div class="quotes">Dostoevsky: “A man who lies to himself… it all comes from lying — lying to others and to yourself.”</div>
+        <div class="quotes">Dostoevsky: “Your worst sin is that you have destroyed and betrayed yourself for nothing.”</div>
+        <div class="quotes">Metamorphosis: “It wasn’t the metamorphosis that killed him. It was the realization that he never mattered beyond his role.”</div>
+      </li>
+      <li><b>Book List:</b>
+        <ul class="books-list">
+          <li>Metamorphosis — Franz Kafka</li>
+          <li>1984 — George Orwell</li>
+          <li>How to Win at Chess — Levy Rozman</li>
+          <li>Crime and Punishment — Fyodor Dostoevsky</li>
+          <li>The Brothers Karamazov — Fyodor Dostoevsky</li>
+          <li>White Nights — Fyodor Dostoevsky</li>
+          <li>Animal Farm — George Orwell</li>
+          <li>Pride and Prejudice — Jane Austen</li>
+          <li>The Diary of a Young Girl — Anne Frank</li>
+          <li>The Trial — Franz Kafka</li>
+          <li>Wuthering Heights — Emily Brontë</li>
+          <li>Little Women — Louisa May Alcott</li>
+          <li>The Secret History — Donna Tartt</li>
+          <li>Frankenstein — Mary Shelley</li>
+          <li>The Picture of Dorian Gray — Oscar Wilde</li>
+          <li>The Bell Jar — Sylvia Plath</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="section-title">Achievements & Projects</div>
+    <ul>
+      <li>
+        <b>Projects:</b>
+        <a class="project-link" href="https://github.com/AvinashNegi1999/100-Days-of-Python-Pro-Bootcamp" target="_blank">
+          100 Days of Python Code Challenge
+        </a>
+      </li>
+      <li><b>Proud Of:</b> Building discipline in coding while exploring literature, chess, and creative arts.</li>
+    </ul>
+    <div class="section-title">Fun & Unique</div>
+    <ul>
+      <li><b>Fun Fact:</b> Combines interests in AI/ML, chess strategy, and 3D animation with classic literature.</li>
+    </ul>
+    <div class="motto">“Continuous effort, not strength or intelligence, is the key to unlocking our potential.”</div>
+  </div>
 </body>
 </html>
