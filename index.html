@@ -3,167 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Avinash Negi | AI & Data Science Student</title>
-  <meta name="description" content="Personal profile of Avinash Negi, B.Tech AI & Data Science student at Amity University."/>
-  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/119884337?v=4"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
+  <title>Avinash Negi | Profile</title>
+  <meta name="description" content="Personal profile of Avinash Negi: Python, Data Science, AI/ML, literature, chess, and more."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;600;500;400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Animate background */
-    body {
-      min-height: 100vh;
+    :root {
+      --primary: #7b47ff;
+      --secondary: #fed6e3;
+      --accent: #a8edea;
+      --bg-light: #fcfbfe;
+      --text-main: #23213a;
+      --text-soft: #5e5a78;
+      --card-radius: 22px;
+      --shadow: 0 6px 32px 0 rgba(123, 71, 255, 0.12), 0 2px 8px 0 rgba(80,29,160,0.06);
+    }
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-      color: #23213a;
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
       background: linear-gradient(120deg, #fed6e3 0%, #a8edea 100%);
-      background-size: 400% 400%;
-      animation: gradientMove 13s ease infinite;
+      min-height: 100vh;
+      color: var(--text-main);
+      box-sizing: border-box;
+    }
+    .hero {
+      width: 100vw;
+      min-height: 38vh;
+      background: linear-gradient(100deg, rgba(123,71,255,0.33) 0%, rgba(168,237,234,0.18) 100%);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      transition: background 0.5s;
-    }
-    @keyframes gradientMove {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-    .glass-card {
-      max-width: 450px;
-      width: 95vw;
-      background: rgba(255,255,255,0.20);
-      border-radius: 28px;
-      box-shadow: 0 8px 48px 0 rgba(123, 71, 255, 0.13), 0 2px 8px 0 rgba(80, 29, 160, 0.08);
-      padding: 44px 36px 36px 36px;
-      backdrop-filter: blur(17px);
-      border: 1.5px solid #ece8fbcc;
-      margin: 25px 0;
-      text-align: center;
+      justify-content: flex-end;
       position: relative;
-      z-index: 10;
       overflow: hidden;
     }
-    .avatar-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    .avatar-pulse {
-      position: absolute;
-      width: 126px;
-      height: 126px;
+    .profile-pic-glow {
+      margin-top: 42px;
+      box-shadow: 0 0 0 8px #fed6e366, 0 0 44px 6px #a8edea55;
       border-radius: 50%;
-      background: radial-gradient(rgba(123, 71, 255, 0.10), transparent 70%);
-      animation: pulseanim 2.3s infinite;
-      z-index: 1;
-    }
-    @keyframes pulseanim {
-      0% { transform: scale(1);}
-      70% { transform: scale(1.13);}
-      100% { transform: scale(1);}
-    }
-    .avatar-ring {
-      width: 124px;
-      height: 124px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7b47ff 55%, #fed6e3 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 0;
-      z-index: 2;
-      box-shadow: 0 0 16px #b7aaff33;
+      background: linear-gradient(135deg, #fff 70%, #a8edea 100%);
+      padding: 10px;
       position: relative;
     }
-    .avatar {
-      width: 108px;
-      height: 108px;
+    .profile-pic {
+      width: 170px;
+      height: 170px;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid #fff;
-      box-shadow: 0 0 0 4px #e8e6ff44, 0 2px 16px #7b47ff33;
-      background: #fff;
-      z-index: 3;
+      border: 4px solid #fff;
+      box-shadow: 0 6px 44px #7b47ff33;
     }
-    .name {
-      font-size: 2.25rem;
-      font-weight: 700;
-      color: #7b47ff;
-      margin-bottom: 2px;
-      margin-top: 7px;
+    .hero-content {
+      margin-top: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--text-main);
     }
-    .subtitle {
-      font-size: 1.07rem;
-      color: #5e5a78;
-      margin-bottom: 4px;
+    .hero-content .name {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .hero-content .subtitle {
+      font-size: 1.22rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
       font-weight: 500;
     }
-    .location {
-      font-size: 1.02rem;
+    .hero-content .location {
+      font-size: 1.08rem;
       color: #837dbd;
       margin-bottom: 16px;
       font-weight: 500;
     }
     .links {
-      margin: 10px 0 18px 0;
+      margin: 0 0 0 0;
     }
     .links a {
       display: inline-block;
-      margin: 0 6px 7px 6px;
+      margin: 0 8px 10px 8px;
       color: #fff;
       background: linear-gradient(90deg, #7b47ff 60%, #a8edea 100%);
-      padding: 7px 16px;
+      padding: 8px 18px;
       border-radius: 18px;
-      font-size: 1rem;
+      font-size: 1.03rem;
       text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 1px 6px #b7aaff26;
-      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
-      border: none;
-      outline: none;
+      font-weight: 700;
       letter-spacing: 0.02em;
+      box-shadow: 0 2px 10px #7b47ff18;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
     }
     .links a:hover {
       background: linear-gradient(90deg, #a8edea 0%, #7b47ff 100%);
       color: #7b47ff;
       box-shadow: 0 2px 18px #7b47ff1c;
     }
-    .section-title {
+    .main-content {
+      margin-top: 0;
+      padding: 36px 0 60px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      background: linear-gradient(180deg, #fcfbfe 85%, #a8edea11 100%);
+    }
+    .section-card {
+      width: 90vw;
+      max-width: 820px;
+      background: rgba(255,255,255,0.88);
+      border-radius: var(--card-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+      padding: 32px 28px 24px 28px;
       text-align: left;
-      color: #7b47ff;
-      margin: 28px 0 10px 0;
-      font-size: 1.18rem;
-      letter-spacing: 0.8px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.1s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: none;}
+    }
+    .section-title {
+      color: var(--primary);
+      font-size: 1.37rem;
       font-weight: 700;
-      border-left: 4px solid #7b47ff;
-      padding-left: 10px;
-      transition: color 0.2s;
+      margin-bottom: 13px;
+      border-left: 5px solid var(--primary);
+      padding-left: 13px;
+      letter-spacing: 0.8px;
     }
     .bio {
       color: #3a3961;
-      font-size: 1.12rem;
-      margin: 0 0 14px 0;
+      font-size: 1.15rem;
       font-style: italic;
-      line-height: 1.6;
-      text-align: left;
+      margin: 0 0 14px 0;
+      line-height: 1.7;
       font-weight: 500;
-      background: rgba(168,237,234,0.08);
-      padding: 8px 14px 8px 14px;
-      border-radius: 10px;
-      transition: background 0.2s;
     }
     ul, ol {
-      padding-left: 17px;
+      padding-left: 20px;
       color: #333052;
-      font-size: 1.01rem;
-      margin: 0;
-      text-align: left;
+      font-size: 1.06rem;
+      margin: 0 0 10px 0;
     }
     .tag-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 12px;
+      gap: 10px 18px;
       margin: 8px 0 4px 0;
       list-style: none;
       padding: 0;
@@ -171,11 +160,10 @@
     .tag {
       background: linear-gradient(90deg, #ece8fb 60%, #fef6f8 100%);
       color: #7b47ff;
-      padding: 5px 13px;
-      border-radius: 12px;
-      font-size: 0.99rem;
+      padding: 6px 15px;
+      border-radius: 14px;
+      font-size: 1.01rem;
       font-weight: 600;
-      display: inline-block;
       border: 1.5px solid #e4dcff;
       box-shadow: 0 1px 3px #d7c9ff22;
       letter-spacing: 0.01em;
@@ -183,15 +171,14 @@
     }
     .quotes {
       background: linear-gradient(90deg, #f7f4ff 60%, #fef6f8 100%);
-      border-left: 3px solid #7b47ff;
-      padding: 6px 14px;
-      margin: 7px 0 7px 0;
+      border-left: 4px solid #7b47ff;
+      padding: 7px 18px;
+      margin: 8px 0 8px 0;
       color: #5e4b8b;
       font-style: italic;
-      font-size: 1.01rem;
-      border-radius: 0 11px 11px 0;
+      font-size: 1.04rem;
+      border-radius: 0 13px 13px 0;
       display: block;
-      transition: background 0.2s;
     }
     .books-list {
       columns: 2;
@@ -199,8 +186,8 @@
       -moz-columns: 2;
       gap: 0.5em;
       margin: 0;
-      padding-left: 10px;
-      font-size: 0.97rem;
+      padding-left: 18px;
+      font-size: 1.02rem;
     }
     .books-list li {
       margin-bottom: 3px;
@@ -215,144 +202,148 @@
     .motto {
       background: linear-gradient(90deg, #ece8fb 60%, #fef6f8 100%);
       color: #5e4b8b;
-      border-left: 3px solid #7b47ff;
-      padding: 8px 14px;
-      border-radius: 0 9px 9px 0;
+      border-left: 4px solid #7b47ff;
+      padding: 10px 18px;
+      border-radius: 0 12px 12px 0;
       font-style: italic;
-      margin: 10px 0 0 0;
-      font-size: 1.04rem;
+      margin: 13px 0 0 0;
+      font-size: 1.08rem;
       font-weight: 600;
       text-align: left;
-      transition: background 0.2s;
     }
-    @media (max-width: 600px) {
-      .glass-card { padding: 10vw 2vw; }
+    @media (max-width: 850px) {
+      .section-card { width: 98vw; padding: 21px 5vw 18px 5vw;}
+      .main-content { padding: 13px 0 36px 0; }
       .books-list { columns: 1; }
-      .name { font-size: 1.3rem; }
-      .avatar { width: 75px; height: 75px;}
-      .avatar-ring, .avatar-pulse { width: 84px; height: 84px;}
+      .profile-pic { width: 120px; height: 120px;}
+      .profile-pic-glow { padding: 5px;}
     }
-    /* Subtle section fade-in effect */
-    .section-title, .bio, .tag-list, ul, .motto, .quotes {
-      opacity: 0;
-      transform: translateY(24px);
-      animation: fadeInSection 1.3s forwards;
-    }
-    .section-title { animation-delay: 0.1s;}
-    .bio { animation-delay: 0.18s;}
-    .tag-list, ul { animation-delay: 0.26s;}
-    .motto { animation-delay: 0.38s;}
-    .quotes { animation-delay: 0.3s;}
-    @keyframes fadeInSection {
-      to { opacity: 1; transform: none; }
+    @media (max-width: 450px) {
+      .hero-content .name { font-size: 1.35rem;}
+      .profile-pic { width: 85px; height: 85px;}
+      .section-title { font-size: 1.12rem;}
+      .section-card { padding: 9vw 2vw 8vw 2vw;}
     }
   </style>
 </head>
 <body>
-  <div class="glass-card">
-    <div class="avatar-wrap" style="position:relative;">
-      <span class="avatar-pulse"></span>
-      <span class="avatar-ring">
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/119884337?v=4" alt="Avinash Negi's Avatar"/>
-      </span>
+  <section class="hero">
+    <div class="profile-pic-glow">
+      <img class="profile-pic" src="https://i.pinimg.com/736x/cf/dd/ca/cfddcab153ffa57e5a167d73c0411ce3.jpg" alt="Avinash Negi's Profile Pic">
     </div>
-    <div class="name">Avinash Negi</div>
-    <div class="subtitle">B.Tech AI & Data Science Student</div>
-    <div class="location">India · Amity University</div>
-    <div class="links">
-      <a href="https://linkedin.com/in/avinash-negi-ba5631223" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/AvinashNegi1999" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://kaggle.com/avinashnegi1999" target="_blank" rel="noopener">Kaggle</a>
-      <a href="https://x.com/AvinashNegiwork" target="_blank" rel="noopener">Twitter/X</a>
-      <a href="mailto:avinashnegi1999work@gmail.com">Email</a>
+    <div class="hero-content">
+      <div class="name">Avinash Negi</div>
+      <div class="subtitle">Profile</div>
+      <div class="location">India</div>
+      <div class="links">
+        <a href="https://linkedin.com/in/avinash-negi-ba5631223" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/AvinashNegi1999" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://kaggle.com/avinashnegi1999" target="_blank" rel="noopener">Kaggle</a>
+        <a href="https://x.com/AvinashNegiwork" target="_blank" rel="noopener">Twitter/X</a>
+        <a href="mailto:avinashnegi1999work@gmail.com">Email</a>
+      </div>
     </div>
-    <div class="section-title">Bio</div>
-    <div class="bio">
-      Avinash Negi is a student pursuing AI &amp; Data Science with a strong focus on Python, Data Structures &amp; Algorithms, and Machine Learning. He is building a solid foundation in computer science while exploring literature, philosophy, and strategy games.
-    </div>
-    <div class="section-title">Core Values</div>
-    <ul class="tag-list">
-      <li class="tag">Continuous learning</li>
-      <li class="tag">Discipline</li>
-      <li class="tag">Creativity</li>
-      <li class="tag">Long-term growth</li>
-    </ul>
-    <div class="section-title">Skills & Interests</div>
-    <ul>
-      <li><b>Main Skills:</b>
-        <span class="tag">Python</span>
-        <span class="tag">C</span>
-        <span class="tag">Beginner-level DSA</span>
-        <span class="tag">GitHub Projects</span>
-        <span class="tag">AI/ML Fundamentals</span>
-      </li>
-      <li><b>Languages/Tools:</b>
-        <span class="tag">Python</span>
-        <span class="tag">C</span>
-        <span class="tag">GitHub</span>
-        <span class="tag">Kaggle</span>
-        <span class="tag">Visual Studio</span>
-        <span class="tag">VS Code</span>
-      </li>
-      <li><b>Hobbies:</b>
-        <span class="tag">Chess</span>
-        <span class="tag">3D Animation</span>
-        <span class="tag">Creating Maps/Buildings</span>
-        <span class="tag">Watching K-dramas (<i>My Mister</i>)</span>
-      </li>
-    </ul>
-    <div class="section-title">Literary Interests</div>
-    <ul>
-      <li><b>Favorite Authors:</b>
-        <span class="tag">Franz Kafka</span>
-        <span class="tag">Fyodor Dostoevsky</span>
-        <span class="tag">George Orwell</span>
-      </li>
-      <li><b>Favorite Quotes:</b>
-        <div class="quotes">Kafka: “She was never mine, just my favorite illusion.”</div>
-        <div class="quotes">Dostoevsky: “Even illusions became real when she smiled.”</div>
-        <div class="quotes">Kafka: “I ran from love because I knew it would destroy me.”</div>
-        <div class="quotes">Dostoevsky: “I ran into love because I needed it to destroy who I used to be.”</div>
-        <div class="quotes">Dostoevsky: “A man who lies to himself… it all comes from lying — lying to others and to yourself.”</div>
-        <div class="quotes">Dostoevsky: “Your worst sin is that you have destroyed and betrayed yourself for nothing.”</div>
-        <div class="quotes">Metamorphosis: “It wasn’t the metamorphosis that killed him. It was the realization that he never mattered beyond his role.”</div>
-      </li>
-      <li><b>Book List:</b>
-        <ul class="books-list">
-          <li>Metamorphosis — Franz Kafka</li>
-          <li>1984 — George Orwell</li>
-          <li>How to Win at Chess — Levy Rozman</li>
-          <li>Crime and Punishment — Fyodor Dostoevsky</li>
-          <li>The Brothers Karamazov — Fyodor Dostoevsky</li>
-          <li>White Nights — Fyodor Dostoevsky</li>
-          <li>Animal Farm — George Orwell</li>
-          <li>Pride and Prejudice — Jane Austen</li>
-          <li>The Diary of a Young Girl — Anne Frank</li>
-          <li>The Trial — Franz Kafka</li>
-          <li>Wuthering Heights — Emily Brontë</li>
-          <li>Little Women — Louisa May Alcott</li>
-          <li>The Secret History — Donna Tartt</li>
-          <li>Frankenstein — Mary Shelley</li>
-          <li>The Picture of Dorian Gray — Oscar Wilde</li>
-          <li>The Bell Jar — Sylvia Plath</li>
-        </ul>
-      </li>
-    </ul>
-    <div class="section-title">Achievements & Projects</div>
-    <ul>
-      <li>
-        <b>Projects:</b>
-        <a class="project-link" href="https://github.com/AvinashNegi1999/100-Days-of-Python-Pro-Bootcamp" target="_blank">
-          100 Days of Python Code Challenge
-        </a>
-      </li>
-      <li><b>Proud Of:</b> Building discipline in coding while exploring literature, chess, and creative arts.</li>
-    </ul>
-    <div class="section-title">Fun & Unique</div>
-    <ul>
-      <li><b>Fun Fact:</b> Combines interests in AI/ML, chess strategy, and 3D animation with classic literature.</li>
-    </ul>
-    <div class="motto">“Continuous effort, not strength or intelligence, is the key to unlocking our potential.”</div>
-  </div>
+  </section>
+  <main class="main-content">
+    <section class="section-card">
+      <div class="section-title">Bio</div>
+      <div class="bio">
+        Avinash Negi is passionate about Python, Data Structures &amp; Algorithms, and Machine Learning. He is building a solid foundation in computer science while exploring literature, philosophy, and strategy games.
+      </div>
+    </section>
+    <section class="section-card">
+      <div class="section-title">Core Values</div>
+      <ul class="tag-list">
+        <li class="tag">Continuous learning</li>
+        <li class="tag">Discipline</li>
+        <li class="tag">Creativity</li>
+        <li class="tag">Long-term growth</li>
+      </ul>
+    </section>
+    <section class="section-card">
+      <div class="section-title">Skills & Interests</div>
+      <ul>
+        <li><b>Main Skills:</b>
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+          <span class="tag">Beginner-level DSA</span>
+          <span class="tag">GitHub Projects</span>
+          <span class="tag">AI/ML Fundamentals</span>
+        </li>
+        <li><b>Languages/Tools:</b>
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Kaggle</span>
+          <span class="tag">Visual Studio</span>
+          <span class="tag">VS Code</span>
+        </li>
+        <li><b>Hobbies:</b>
+          <span class="tag">Chess</span>
+          <span class="tag">3D Animation</span>
+          <span class="tag">Creating Maps/Buildings</span>
+          <span class="tag">Watching K-dramas (<i>My Mister</i>)</span>
+        </li>
+      </ul>
+    </section>
+    <section class="section-card">
+      <div class="section-title">Literary Interests</div>
+      <ul>
+        <li><b>Favorite Authors:</b>
+          <span class="tag">Franz Kafka</span>
+          <span class="tag">Fyodor Dostoevsky</span>
+          <span class="tag">George Orwell</span>
+        </li>
+        <li><b>Favorite Quotes:</b>
+          <div class="quotes">Kafka: “She was never mine, just my favorite illusion.”</div>
+          <div class="quotes">Dostoevsky: “Even illusions became real when she smiled.”</div>
+          <div class="quotes">Kafka: “I ran from love because I knew it would destroy me.”</div>
+          <div class="quotes">Dostoevsky: “I ran into love because I needed it to destroy who I used to be.”</div>
+          <div class="quotes">Dostoevsky: “A man who lies to himself… it all comes from lying — lying to others and to yourself.”</div>
+          <div class="quotes">Dostoevsky: “Your worst sin is that you have destroyed and betrayed yourself for nothing.”</div>
+          <div class="quotes">Metamorphosis: “It wasn’t the metamorphosis that killed him. It was the realization that he never mattered beyond his role.”</div>
+        </li>
+        <li><b>Book List:</b>
+          <ul class="books-list">
+            <li>Metamorphosis — Franz Kafka</li>
+            <li>1984 — George Orwell</li>
+            <li>How to Win at Chess — Levy Rozman</li>
+            <li>Crime and Punishment — Fyodor Dostoevsky</li>
+            <li>The Brothers Karamazov — Fyodor Dostoevsky</li>
+            <li>White Nights — Fyodor Dostoevsky</li>
+            <li>Animal Farm — George Orwell</li>
+            <li>Pride and Prejudice — Jane Austen</li>
+            <li>The Diary of a Young Girl — Anne Frank</li>
+            <li>The Trial — Franz Kafka</li>
+            <li>Wuthering Heights — Emily Brontë</li>
+            <li>Little Women — Louisa May Alcott</li>
+            <li>The Secret History — Donna Tartt</li>
+            <li>Frankenstein — Mary Shelley</li>
+            <li>The Picture of Dorian Gray — Oscar Wilde</li>
+            <li>The Bell Jar — Sylvia Plath</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="section-card">
+      <div class="section-title">Achievements & Projects</div>
+      <ul>
+        <li>
+          <b>Projects:</b>
+          <a class="project-link" href="https://github.com/AvinashNegi1999/100-Days-of-Python-Pro-Bootcamp" target="_blank">
+            100 Days of Python Code Challenge
+          </a>
+        </li>
+        <li><b>Proud Of:</b> Building discipline in coding while exploring literature, chess, and creative arts.</li>
+      </ul>
+    </section>
+    <section class="section-card">
+      <div class="section-title">Fun & Unique</div>
+      <ul>
+        <li><b>Fun Fact:</b> Combines interests in AI/ML, chess strategy, and 3D animation with classic literature.</li>
+      </ul>
+      <div class="motto">“Continuous effort, not strength or intelligence, is the key to unlocking our potential.”</div>
+    </section>
+  </main>
 </body>
 </html>
