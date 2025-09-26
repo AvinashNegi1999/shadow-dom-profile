@@ -149,13 +149,13 @@
       font-size: 1.06rem;
       margin: 0 0 10px 0;
     }
-    .tag-list {
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
-      margin: 8px 0 4px 0;
-      list-style: none;
+      gap: 10px 14px;
+      margin: 7px 0 13px 0;
       padding: 0;
+      list-style: none;
     }
     .tag {
       background: linear-gradient(90deg, #ece8fb 60%, #fef6f8 100%);
@@ -168,17 +168,25 @@
       box-shadow: 0 1px 3px #d7c9ff22;
       letter-spacing: 0.01em;
       margin-bottom: 2px;
+      margin-top: 2px;
     }
     .quotes {
       background: linear-gradient(90deg, #f7f4ff 60%, #fef6f8 100%);
       border-left: 4px solid #7b47ff;
-      padding: 7px 18px;
+      padding: 9px 18px 9px 18px;
       margin: 8px 0 8px 0;
       color: #5e4b8b;
       font-style: italic;
-      font-size: 1.04rem;
+      font-size: 1.08rem;
       border-radius: 0 13px 13px 0;
       display: block;
+    }
+    .quote-author {
+      display: block;
+      font-size: 0.97rem;
+      color: #999;
+      margin-top: 2px;
+      margin-left: 8px;
     }
     .books-list {
       columns: 2;
@@ -253,7 +261,7 @@
     </section>
     <section class="section-card">
       <div class="section-title">Core Values</div>
-      <ul class="tag-list">
+      <ul class="tag-row">
         <li class="tag">Continuous learning</li>
         <li class="tag">Discipline</li>
         <li class="tag">Creativity</li>
@@ -262,46 +270,72 @@
     </section>
     <section class="section-card">
       <div class="section-title">Skills & Interests</div>
-      <ul>
-        <li><b>Main Skills:</b>
-          <span class="tag">Python</span>
-          <span class="tag">C</span>
-          <span class="tag">Beginner-level DSA</span>
-          <span class="tag">GitHub Projects</span>
-          <span class="tag">AI/ML Fundamentals</span>
-        </li>
-        <li><b>Languages/Tools:</b>
-          <span class="tag">Python</span>
-          <span class="tag">C</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">Kaggle</span>
-          <span class="tag">Visual Studio</span>
-          <span class="tag">VS Code</span>
-        </li>
-        <li><b>Hobbies:</b>
-          <span class="tag">Chess</span>
-          <span class="tag">3D Animation</span>
-          <span class="tag">Creating Maps/Buildings</span>
-          <span class="tag">Watching K-dramas (<i>My Mister</i>)</span>
-        </li>
-      </ul>
+      <div>
+        <b>Main Skills:</b>
+        <ul class="tag-row">
+          <li class="tag">Python</li>
+          <li class="tag">C</li>
+          <li class="tag">Beginner-level DSA</li>
+          <li class="tag">GitHub Projects</li>
+          <li class="tag">AI/ML Fundamentals</li>
+        </ul>
+      </div>
+      <div>
+        <b>Languages/Tools:</b>
+        <ul class="tag-row">
+          <li class="tag">Python</li>
+          <li class="tag">C</li>
+          <li class="tag">GitHub</li>
+          <li class="tag">Kaggle</li>
+          <li class="tag">Visual Studio</li>
+          <li class="tag">VS Code</li>
+        </ul>
+      </div>
+      <div>
+        <b>Hobbies:</b>
+        <ul class="tag-row">
+          <li class="tag">Chess</li>
+          <li class="tag">3D Animation</li>
+          <li class="tag">Creating Maps/Buildings</li>
+          <li class="tag">Watching K-dramas (<i>My Mister</i>)</li>
+        </ul>
+      </div>
     </section>
     <section class="section-card">
       <div class="section-title">Literary Interests</div>
       <ul>
         <li><b>Favorite Authors:</b>
-          <span class="tag">Franz Kafka</span>
-          <span class="tag">Fyodor Dostoevsky</span>
-          <span class="tag">George Orwell</span>
+          <ul class="tag-row">
+            <li class="tag">Franz Kafka</li>
+            <li class="tag">Fyodor Dostoevsky</li>
+            <li class="tag">George Orwell</li>
+          </ul>
         </li>
         <li><b>Favorite Quotes:</b>
-          <div class="quotes">Kafka: “She was never mine, just my favorite illusion.”</div>
-          <div class="quotes">Dostoevsky: “Even illusions became real when she smiled.”</div>
-          <div class="quotes">Kafka: “I ran from love because I knew it would destroy me.”</div>
-          <div class="quotes">Dostoevsky: “I ran into love because I needed it to destroy who I used to be.”</div>
-          <div class="quotes">Dostoevsky: “A man who lies to himself… it all comes from lying — lying to others and to yourself.”</div>
-          <div class="quotes">Dostoevsky: “Your worst sin is that you have destroyed and betrayed yourself for nothing.”</div>
-          <div class="quotes">Metamorphosis: “It wasn’t the metamorphosis that killed him. It was the realization that he never mattered beyond his role.”</div>
+          <div class="quotes">
+            “A book must be the axe for the frozen sea within us.”
+            <span class="quote-author">— Franz Kafka, Letter to Oskar Pollak, 1904</span>
+          </div>
+          <div class="quotes">
+            “I am free and that is why I am lost.”
+            <span class="quote-author">— Franz Kafka, The Diaries of Franz Kafka</span>
+          </div>
+          <div class="quotes">
+            “To live without hope is to cease to live.”
+            <span class="quote-author">— Fyodor Dostoevsky, The Brothers Karamazov</span>
+          </div>
+          <div class="quotes">
+            “The soul is healed by being with children.”
+            <span class="quote-author">— Fyodor Dostoevsky, The Idiot</span>
+          </div>
+          <div class="quotes">
+            “Who controls the past controls the future. Who controls the present controls the past.”
+            <span class="quote-author">— George Orwell, 1984</span>
+          </div>
+          <div class="quotes">
+            “In a time of deceit telling the truth is a revolutionary act.”
+            <span class="quote-author">— Attributed to George Orwell</span>
+          </div>
         </li>
         <li><b>Book List:</b>
           <ul class="books-list">
