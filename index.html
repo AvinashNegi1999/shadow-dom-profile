@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Avinash Negi | Pythonist & Creator</title>
   <meta name="description" content="Creative profile of Avinash Negi: Pythonist, automation enthusiast, chess learner, 3D explorer, and literature lover.">
-  <meta property="og:title" content="Avinash Negi | Pythonist & Creator">
-  <meta property="og:description" content="Portfolio of Avinash Negi: Pythonist, automation enthusiast, chess learner, 3D explorer, and literature lover.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -24,116 +20,60 @@
       --text-accent: #a855f7;
       --glow: rgba(99, 102, 241, 0.4);
     }
-    
-    body.light {
-      --bg-dark: #f7fafc;
-      --bg-card: rgba(255,255,255,0.92);
-      --text-primary: #22223b;
-      --text-secondary: #41436a;
-      --glass: rgba(99,102,241,0.09);
-      --glass-border: rgba(99,102,241,0.15);
-      --glow: rgba(99,102,241,0.12);
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
-    
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg-dark);
       color: var(--text-primary);
       overflow-x: hidden;
       position: relative;
-      transition: background 0.3s, color 0.3s;
     }
-    
-    .skip-link {
-      position: absolute; 
-      left: -999px; 
-      top: auto; 
-      width: 1px; 
-      height: 1px; 
-      overflow: hidden;
-      background: var(--secondary); 
-      color: white; 
-      padding: 0.5em 1em; 
-      border-radius: 4px; 
-      z-index: 10000;
-    }
-    
-    .skip-link:focus { 
-      left: 10px; 
-      top: 10px; 
-      width: auto; 
-      height: auto; 
-    }
-    
-    .theme-toggle {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.2rem;
-      z-index: 100;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      font-size: 1.6rem;
-      cursor: pointer;
-      color: var(--text-primary);
-      transition: background 0.3s, box-shadow 0.3s;
-      box-shadow: 0 3px 12px rgba(99,102,241,0.10);
-      backdrop-filter: blur(10px);
-    }
-    
-    .theme-toggle:hover { 
-      background: rgba(99,102,241,0.18); 
-    }
-    
+
+    /* Animated background */
     .bg-animation {
       position: fixed;
-      top: 0; 
-      left: 0; 
-      width: 100%; 
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
       z-index: -2;
       background: linear-gradient(45deg, #0f0f23, #1a1a3a, #2d1b69);
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
     }
-    
-    body.light .bg-animation {
-      background: linear-gradient(45deg, #f7fafc, #e2e8f0, #cbd5e1);
-    }
-    
+
     @keyframes gradientShift {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
-    
+
+    /* Floating particles */
     .particles {
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      z-index: -1; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
       pointer-events: none;
     }
-    
+
     .particle {
       position: absolute;
-      width: 4px; 
+      width: 4px;
       height: 4px;
       background: radial-gradient(circle, var(--primary), transparent);
       border-radius: 50%;
       animation: float 20s infinite linear;
       opacity: 0.6;
     }
-    
+
     @keyframes float {
       0% {
         transform: translateY(100vh) translateX(0px) rotate(0deg);
@@ -146,7 +86,8 @@
         opacity: 0;
       }
     }
-    
+
+    /* Hero section */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -157,67 +98,61 @@
       text-align: center;
       padding: 2rem;
     }
-    
+
     .hero::before {
       content: '';
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       bottom: 0;
       background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1), transparent 70%);
       pointer-events: none;
     }
-    
+
     .profile-container {
       position: relative;
       margin-bottom: 2rem;
     }
-    
+
     .profile-glow {
-      position: absolute; 
-      top: 50%; 
+      position: absolute;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 250px; 
+      width: 250px;
       height: 250px;
       background: radial-gradient(circle, var(--glow), transparent 70%);
       border-radius: 50%;
       animation: pulse 3s ease-in-out infinite;
     }
-    
+
     @keyframes pulse {
       0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
       50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
     }
-    
-    .profile-pic-fallback {
-      width: 180px; 
-      height: 180px; 
-      border-radius: 50%; 
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
       border: 3px solid var(--glass-border);
-      box-shadow: 0 0 50px rgba(99, 102, 241, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
-      position: relative; 
+      box-shadow: 
+        0 0 50px rgba(99, 102, 241, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+      position: relative;
       z-index: 2;
       transition: all 0.5s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    
-    .profile-pic-fallback:hover {
+
+    .profile-pic:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 80px rgba(99, 102, 241, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 0 80px rgba(99, 102, 241, 0.8),
+        inset 0 0 30px rgba(255, 255, 255, 0.2);
     }
-    
-    .profile-initial {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: white;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
+
     .hero-content .name {
       font-size: clamp(2.5rem, 8vw, 5rem);
       font-weight: 900;
@@ -230,23 +165,20 @@
       margin-bottom: 1rem;
       text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
     }
-    
+
     @keyframes gradientText {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
-    
+
     .subtitle {
       font-size: 1.5rem;
       color: var(--text-secondary);
       margin-bottom: 0.5rem;
-      min-height: 2.2em;
-      letter-spacing: 0.02em;
-      font-family: 'JetBrains Mono', 'Inter', monospace;
       opacity: 0;
       animation: slideUp 1s ease 0.5s forwards;
     }
-    
+
     .aka {
       font-size: 1.2rem;
       color: var(--text-accent);
@@ -254,7 +186,7 @@
       opacity: 0;
       animation: slideUp 1s ease 0.7s forwards;
     }
-    
+
     .age {
       font-size: 1rem;
       color: var(--text-secondary);
@@ -262,21 +194,27 @@
       opacity: 0;
       animation: slideUp 1s ease 0.9s forwards;
     }
-    
+
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px);}
-      to { opacity: 1; transform: translateY(0);}
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    
+
     .social-links {
-      display: flex; 
-      gap: 1rem; 
-      flex-wrap: wrap; 
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       justify-content: center;
-      opacity: 0; 
+      opacity: 0;
       animation: slideUp 1s ease 1.1s forwards;
     }
-    
+
     .social-link {
       padding: 12px 24px;
       background: var(--glass);
@@ -290,48 +228,52 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .social-link::before {
       content: '';
       position: absolute;
-      top: 0; 
-      left: -100%; 
-      width: 100%; 
+      top: 0;
+      left: -100%;
+      width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
       transition: left 0.5s ease;
     }
-    
-    .social-link:hover::before { left: 100%; }
-    
+
+    .social-link:hover::before {
+      left: 100%;
+    }
+
     .social-link:hover {
       transform: translateY(-5px) scale(1.05);
       background: rgba(99, 102, 241, 0.2);
       border-color: var(--primary);
       box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
     }
-    
+
+    /* Scroll indicator */
     .scroll-indicator {
       position: absolute;
-      bottom: 2rem; 
-      left: 50%; 
+      bottom: 2rem;
+      left: 50%;
       transform: translateX(-50%);
       color: var(--text-secondary);
       animation: bounce 2s infinite;
     }
-    
+
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0);}
-      40% { transform: translateX(-50%) translateY(-10px);}
-      60% { transform: translateX(-50%) translateY(-5px);}
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
     }
-    
+
+    /* Main content */
     .main-content {
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+
     .section-card {
       background: var(--glass);
       border: 1px solid var(--glass-border);
@@ -345,12 +287,121 @@
       opacity: 0;
       transform: translateY(50px);
     }
-    
-    .section-card.visible { 
-      opacity: 1; 
+
+    /* Themed section backgrounds with images */
+    .bio-card {
+      background: 
+        linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><g fill="none" stroke="%236366f1" stroke-width="1" opacity="0.1"><circle cx="30" cy="30" r="25"/><circle cx="30" cy="30" r="15"/><circle cx="30" cy="30" r="5"/></g></svg>');
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      background-size: 120px 120px, 60px 60px;
+      background-position: top right, bottom left;
+      background-repeat: no-repeat, repeat;
+    }
+
+    .skills-card {
+      background: 
+        linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05)),
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url('https://i.postimg.cc/02L6KYNw/10087525.jpg'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g fill="%2310b981" opacity="0.08"><rect width="2" height="8" x="6" y="16"/><rect width="2" height="12" x="10" y="14"/><rect width="2" height="6" x="14" y="17"/><rect width="2" height="10" x="18" y="15"/><rect width="2" height="14" x="22" y="13"/><rect width="2" height="4" x="26" y="18"/><rect width="2" height="16" x="30" y="12"/></g></svg>');
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      background-size: cover, cover, cover, 80px 80px;
+      background-position: center, center, center, bottom right;
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    }
+
+    .anime-games-card {
+      background: 
+        linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(249, 115, 22, 0.05)),
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url('https://i.postimg.cc/MKcMGPzw/3796072.jpg'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="%23ec4899" opacity="0.06"><rect width="40" height="25" x="5" y="12.5" rx="3"/><circle cx="15" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><rect width="3" height="8" x="30" y="16"/><rect width="8" height="3" x="27.5" y="18.5"/></g></svg>');
+      border: 1px solid rgba(236, 72, 153, 0.2);
+      background-size: cover, cover, cover, 100px 100px;
+      background-position: center, center, center, bottom left;
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    }
+
+    .books-card {
+      background: 
+        linear-gradient(135deg, rgba(180, 83, 9, 0.12), rgba(146, 64, 14, 0.08)),
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url('https://i.postimg.cc/JhwL0Sh1/books-assortment-with-dark-background.jpg'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="80" viewBox="0 0 60 80"><g fill="none" stroke="%23b45309" opacity="0.08"><rect width="45" height="65" x="7.5" y="7.5" rx="2"/><line x1="15" y1="20" x2="45" y2="20"/><line x1="15" y1="28" x2="40" y2="28"/><line x1="15" y1="36" x2="42" y2="36"/><line x1="15" y1="44" x2="38" y2="44"/><line x1="15" y1="52" x2="41" y2="52"/></g></svg>');
+      border: 1px solid rgba(180, 83, 9, 0.3);
+      background-size: cover, cover, cover, 120px 160px;
+      background-position: center, center, center, bottom right;
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+      position: relative;
+    }
+    .books-card::after {
+      content: '📚';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.1;
+    }
+    .books-card::before {
+      background: linear-gradient(90deg, transparent, rgba(180, 83, 9, 0.3), transparent);
+    }
+
+    .quote-card-section {
+      background: 
+        linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.08)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill="%236366f1" opacity="0.05"><path d="M20,40 Q20,20 40,20 Q60,20 60,40 Q60,60 40,60 Q35,60 30,55 L25,65 Q20,60 20,50 Z"/><path d="M60,40 Q60,20 80,20 Q100,20 100,40 Q100,60 80,60 Q75,60 70,55 L65,65 Q60,60 60,50 Z"/></g></svg>');
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      background-size: 200px 200px, 200px 200px;
+      background-position: top right, bottom left;
+      background-repeat: no-repeat, no-repeat;
+    }
+    .quote-card-section::before {
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    }
+
+    .philosophy-card {
+      background: 
+        linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g fill="none" stroke="%23f59e0b" stroke-width="2" opacity="0.08"><circle cx="40" cy="40" r="30"/><path d="M25,25 L55,55 M55,25 L25,55"/><circle cx="40" cy="40" r="15"/><circle cx="40" cy="40" r="5"/></g></svg>');
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      background-size: 160px 160px, 160px 160px;
+      background-position: top left, bottom right;
+      background-repeat: no-repeat, no-repeat;
+    }
+    .philosophy-card::before {
+      background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+    }
+
+    .section-card.visible {
+      opacity: 1;
       transform: translateY(0);
     }
-    
+
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .section-card:hover::before {
+      opacity: 1;
+    }
+
+    .section-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(99, 102, 241, 0.1);
+    }
+
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
@@ -359,108 +410,60 @@
       position: relative;
       display: inline-block;
     }
-    
+
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -5px; 
+      bottom: -5px;
       left: 0;
-      width: 0; 
+      width: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
       transition: width 0.5s ease;
     }
-    
-    .section-card:hover .section-title::after { 
-      width: 100%; 
-    }
-    
-    .section-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(99, 102, 241, 0.1);
+
+    .section-card:hover .section-title::after {
+      width: 100%;
     }
 
-    /* Themed section backgrounds */
-    .bio-card { 
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05)); 
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    
-    .skills-card { 
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05)); 
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-    
-    .anime-games-card { 
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(249, 115, 22, 0.05)); 
-      border: 1px solid rgba(236, 72, 153, 0.2);
-    }
-    
-    .books-card { 
-      background: 
-        linear-gradient(135deg, rgba(180, 83, 9, 0.12), rgba(146, 64, 14, 0.08)),
-        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-        url('https://i.postimg.cc/JhwL0Sh1/books-assortment-with-dark-background.jpg'); 
-      border: 1px solid rgba(180, 83, 9, 0.3);
-      background-size: cover, cover, cover;
-      background-position: center, center, center;
-      background-repeat: no-repeat, no-repeat, no-repeat;
-    }
-    
-    .quote-card-section { 
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.08)); 
-      border: 1px solid rgba(99, 102, 241, 0.3);
-    }
-    
-    .philosophy-card { 
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.05)); 
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-    
-    .projects-card { 
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(14, 165, 233, 0.05)); 
-      border: 1px solid rgba(6, 182, 212, 0.2);
-    }
-    
-    .testimonials-card { 
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(219, 39, 119, 0.05)); 
-      border: 1px solid rgba(236, 72, 153, 0.2);
-    }
-    
-    .contact-card { 
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.05)); 
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-    
-    .projects-card .section-title { color: #06b6d4; }
-    .testimonials-card .section-title { color: #ec4899; }
-    .contact-card .section-title { color: #10b981;}
-
-    .bio { 
-      font-size: 1.2rem; 
-      line-height: 1.8; 
-      color: var(--text-secondary); 
-      font-style: italic; 
-      position: relative; 
+    .bio {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-style: italic;
+      position: relative;
       padding-left: 1rem;
     }
-    
-    .bio::before { 
-      content: ''; 
-      position: absolute; 
-      left: 0; 
-      top: 0; 
-      bottom: 0; 
-      width: 4px; 
-      background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+
+    .bio::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       border-radius: 2px;
     }
-    
-    .tags-container { margin: 1.5rem 0;}
-    .tags-label { font-weight: 600; color: var(--text-primary); margin-bottom: 0.8rem; display: block;}
-    .tag-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.5rem;}
-    
+
+    .tags-container {
+      margin: 1.5rem 0;
+    }
+
+    .tags-label {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
     .tag {
       padding: 8px 16px;
       background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
@@ -474,52 +477,74 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .tag::before {
       content: '';
       position: absolute;
-      top: 0; 
-      left: -100%; 
-      width: 100%; 
+      top: 0;
+      left: -100%;
+      width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
       transition: left 0.5s ease;
     }
-    
-    .tag:hover::before { left: 100%; }
-    
-    .skills-card .tag { 
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1)); 
+
+    .tag:hover::before {
+      left: 100%;
+    }
+
+    /* Themed section titles */
+    .bio-card .section-title { color: var(--primary); }
+    .skills-card .section-title { color: #10b981; }
+    .anime-games-card .section-title { color: #ec4899; }
+    .books-card .section-title { color: #b45309; }
+    .quote-card-section .section-title { color: #6366f1; }
+    .philosophy-card .section-title { color: #f59e0b; }
+
+    /* Themed tags */
+    .skills-card .tag {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1));
       border: 1px solid rgba(16, 185, 129, 0.4);
     }
-    
-    .anime-games-card .tag { 
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(249, 115, 22, 0.1)); 
+    .skills-card .tag:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.2));
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    }
+
+    .anime-games-card .tag {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(249, 115, 22, 0.1));
       border: 1px solid rgba(236, 72, 153, 0.4);
     }
-    
-    .books-card .tag { 
-      background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(146, 64, 14, 0.15)); 
+    .anime-games-card .tag:hover {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(249, 115, 22, 0.2));
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+    }
+
+    .books-card .tag {
+      background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(146, 64, 14, 0.15));
       border: 1px solid rgba(180, 83, 9, 0.4);
     }
-    
-    .books-card .book-item { 
-      background: rgba(180, 83, 9, 0.1); 
+    .books-card .tag:hover {
+      background: linear-gradient(135deg, rgba(180, 83, 9, 0.3), rgba(146, 64, 14, 0.25));
+      box-shadow: 0 8px 25px rgba(180, 83, 9, 0.4);
+    }
+
+    .books-card .book-item {
+      background: rgba(180, 83, 9, 0.1);
       border: 1px solid rgba(180, 83, 9, 0.2);
     }
-    
-    .books-card .book-item:hover { 
-      background: rgba(180, 83, 9, 0.2); 
+    .books-card .book-item:hover {
+      background: rgba(180, 83, 9, 0.2);
       border-color: rgba(180, 83, 9, 0.4);
     }
-    
-    .books-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-      gap: 1rem; 
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
       margin: 1rem 0;
     }
-    
+
     .book-item {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -528,62 +553,13 @@
       transition: all 0.3s ease;
       cursor: pointer;
     }
-    
+
     .book-item:hover {
       background: rgba(99, 102, 241, 0.1);
       border-color: var(--primary);
       transform: translateY(-5px);
     }
-    
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    
-    .project-item {
-      background: var(--glass);
-      border: 1.5px solid var(--accent);
-      border-radius: 20px;
-      padding: 1.7rem 1.2rem 1.2rem 1.2rem;
-      box-shadow: 0 8px 32px rgba(6,182,212,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .project-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 24px 60px 0 rgba(6,182,212,0.13);
-      border-color: #6366f1;
-    }
-    
-    .project-title { 
-      font-weight: 700; 
-      font-size: 1.2rem; 
-      margin-bottom: 0.5rem; 
-      color: var(--accent);
-      text-transform: capitalize;
-    }
-    
-    .project-desc { 
-      color: var(--text-secondary); 
-      font-size: 1rem; 
-      margin-bottom: 1rem;
-    }
-    
-    .project-link { 
-      color: var(--primary); 
-      text-decoration: none; 
-      font-weight: 600; 
-      transition: color 0.2s;
-    }
-    
-    .project-link:hover { 
-      color: var(--secondary);
-    }
-    
+
     .quote-card {
       background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
       border-left: 4px solid var(--primary);
@@ -595,26 +571,26 @@
       font-size: 1.1rem;
       line-height: 1.7;
     }
-    
+
     .quote-card::before {
       content: '"';
       position: absolute;
-      top: -10px; 
+      top: -10px;
       left: 15px;
       font-size: 4rem;
       color: var(--primary);
       opacity: 0.3;
       font-family: serif;
     }
-    
-    .quote-author { 
-      text-align: right; 
-      margin-top: 1rem; 
-      font-style: normal; 
-      color: var(--text-accent); 
+
+    .quote-author {
+      text-align: right;
+      margin-top: 1rem;
+      font-style: normal;
+      color: var(--text-accent);
       font-weight: 600;
     }
-    
+
     .motto-card {
       text-align: center;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -627,117 +603,68 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .motto-card::before {
       content: '';
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       bottom: 0;
-      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
       transform: translateX(-100%);
       animation: shine 3s ease infinite;
     }
-    
+
     @keyframes shine {
-      0% { transform: translateX(-100%);}
-      50% { transform: translateX(100%);}
-      100% { transform: translateX(100%);}
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
     }
-    
-    .testimonial-slider { 
-      position: relative; 
-      min-height: 120px; 
-    }
-    
-    .testimonial-item { 
-      opacity: 0; 
-      transition: opacity 0.7s; 
-      position: absolute; 
-      left: 0; 
-      right: 0; 
-      top: 0; 
-      font-style: italic;
-    }
-    
-    .testimonial-item.active { 
-      opacity: 1; 
-      position: relative;
-    }
-    
-    .testimonial-author { 
-      text-align: right; 
-      color: var(--primary); 
-      margin-top: 0.8rem; 
-      font-style: normal;
-    }
-    
-    .contact-card form { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 1rem;
-    }
-    
-    .contact-card input, 
-    .contact-card textarea { 
-      padding: 0.9em; 
-      border-radius: 8px; 
-      border: 1px solid var(--glass-border); 
-      background: var(--glass); 
-      color: var(--text-primary); 
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
-    }
-    
-    .contact-card button { 
-      padding: 0.9em; 
-      border-radius: 8px; 
-      background: var(--primary); 
-      color: white; 
-      border: none; 
-      cursor: pointer; 
-      font-weight: 600; 
-      transition: background 0.2s;
-    }
-    
-    .contact-card button:hover { 
-      background: var(--secondary);
-    }
-    
-    .form-message { 
-      font-size: 1rem; 
-      margin-top: 0.5rem;
-      color: var(--primary);
-    }
-    
+
+    /* Responsive design */
     @media (max-width: 768px) {
-      .hero { padding: 1rem;}
-      .section-card { padding: 1.5rem; margin-bottom: 1.5rem;}
-      .main-content { padding: 2rem 1rem;}
-      .social-links { gap: 0.5rem;}
-      .social-link { padding: 10px 18px; font-size: 0.9rem;}
-      .books-grid, .projects-grid { grid-template-columns: 1fr;}
+      .hero {
+        padding: 1rem;
+      }
+      
+      .section-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .main-content {
+        padding: 2rem 1rem;
+      }
+      
+      .social-links {
+        gap: 0.5rem;
+      }
+      
+      .social-link {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+      
+      .books-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌗</button>
   <div class="bg-animation"></div>
   <div class="particles" id="particles"></div>
   
   <section class="hero">
     <div class="profile-container">
       <div class="profile-glow"></div>
-      <div class="profile-pic-fallback">
-        <div class="profile-initial">AN</div>
-      </div>
+      <img class="profile-pic" src="https://i.pinimg.com/736x/cf/dd/ca/cfddcab153ffa57e5a167d73c0411ce3.jpg" alt="Avinash Negi's Profile Pic">
     </div>
     <div class="hero-content">
       <div class="name">Avinash Negi</div>
       <div class="age">26 years old</div>
-      <div class="subtitle" id="typewriter"></div>
+      <div class="subtitle">Python · ML/AI Automation · Full Stack Enthusiast</div>
       <div class="aka">aka <span style="color:var(--primary);font-weight:700;">Pythonist</span></div>
       <div class="social-links">
         <a href="https://linkedin.com/in/avinash-negi-ba5631223" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
@@ -752,8 +679,8 @@
       <div>Scroll to explore</div>
     </div>
   </section>
-  
-  <main class="main-content" id="main-content">
+
+  <main class="main-content">
     <section class="section-card bio-card">
       <div class="section-title">Bio</div>
       <div class="bio">
@@ -761,7 +688,7 @@
         Away from code, you'll find me learning chess (dreaming of 1800+ ELO, thanks to Levy Rozman's book!), enjoying podcasts and anime reviews, and getting lost in the pages of classic literature. My journey is about learning, creating, and staying kind and humble along the way.
       </div>
     </section>
-    
+
     <section class="section-card skills-card">
       <div class="section-title">Skills & Interests</div>
       <div class="tags-container">
@@ -812,12 +739,7 @@
         </div>
       </div>
     </section>
-    
-    <section class="section-card projects-card" id="projects">
-      <div class="section-title">Featured Projects</div>
-      <div class="projects-grid" id="projects-grid"></div>
-    </section>
-    
+
     <section class="section-card anime-games-card">
       <div class="section-title">Anime & Games</div>
       <div class="tags-container">
@@ -846,7 +768,7 @@
         </div>
       </div>
     </section>
-    
+
     <section class="section-card books-card">
       <div class="section-title">Books & Literature</div>
       <div class="tags-container">
@@ -876,25 +798,7 @@
         </div>
       </div>
     </section>
-    
-    <section class="section-card testimonials-card">
-      <div class="section-title">Testimonials</div>
-      <div class="testimonial-slider" id="testimonial-slider">
-        <div class="testimonial-item active">
-          <div class="testimonial-text">"Avinash is a creative force and a joy to collaborate with!"</div>
-          <div class="testimonial-author">— Peer, Python Community</div>
-        </div>
-        <div class="testimonial-item">
-          <div class="testimonial-text">"His automation projects saved me hours every week."</div>
-          <div class="testimonial-author">— Client, Automation Project</div>
-        </div>
-        <div class="testimonial-item">
-          <div class="testimonial-text">"Always learning, always humble. Highly recommended."</div>
-          <div class="testimonial-author">— Mentor</div>
-        </div>
-      </div>
-    </section>
-    
+
     <section class="section-card quote-card-section">
       <div class="section-title">Favorite Quote</div>
       <div class="quote-card">
@@ -903,187 +807,54 @@
         <div class="quote-author">— Fyodor Dostoevsky</div>
       </div>
     </section>
-    
+
     <section class="section-card philosophy-card">
       <div class="section-title">Personal Philosophy</div>
       <div class="motto-card">
         "To keep learning, creating, and still remain kind and humble."
       </div>
     </section>
-    
-    <section class="section-card contact-card">
-      <div class="section-title">Contact Me</div>
-      <form id="contact-form" autocomplete="off">
-        <input type="text" name="name" placeholder="Your Name" required autocomplete="name">
-        <input type="email" name="email" placeholder="Your Email" required autocomplete="email">
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-        <div class="form-message" id="form-message"></div>
-      </form>
-    </section>
   </main>
-  
+
   <script>
-    // THEME TOGGLE
-    document.getElementById('theme-toggle').onclick = function() {
-      document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      this.textContent = isLight ? '☀️' : '🌗';
-    };
-    
-    // Initialize theme
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light');
-      document.getElementById('theme-toggle').textContent = '☀️';
-    }
-
-    // TYPEWRITER SUBTITLE
-    const roles = [
-      "Pythonist",
-      "ML/AI Automation",
-      "Full Stack Enthusiast", 
-      "Chess Learner",
-      "3D Explorer",
-      "Literature Lover",
-      "Automation Tinkerer"
-    ];
-    let r = 0, t = 0, del = false;
-    const el = document.getElementById('typewriter');
-    
-    function type() {
-      const curr = roles[r % roles.length];
-      el.textContent = del ? curr.substring(0, t--) : curr.substring(0, t++);
-      if (!del && t === curr.length + 2) {
-        del = true;
-        setTimeout(type, 1500); // Pause at end
-        return;
-      } else if (del && t === 0) { 
-        del = false; 
-        r++; 
-        setTimeout(type, 500); // Pause before next
-        return;
-      }
-      setTimeout(type, del ? 50 : 100);
-    }
-    type();
-
-    // PARTICLES
+    // Create floating particles
     function createParticle() {
-      const container = document.getElementById('particles');
-      if (container.childElementCount > 50) return;
       const particle = document.createElement('div');
       particle.className = 'particle';
       particle.style.left = Math.random() * 100 + 'vw';
       particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
       particle.style.animationDelay = Math.random() * 5 + 's';
-      container.appendChild(particle);
-      setTimeout(() => { 
-        if (particle.parentNode) particle.remove(); 
+      document.getElementById('particles').appendChild(particle);
+      
+      // Remove particle after animation
+      setTimeout(() => {
+        particle.remove();
       }, 25000);
     }
-    setInterval(createParticle, 400);
 
-    // INTERSECTION OBSERVER
-    const observerOptions = { 
-      threshold: 0.1, 
-      rootMargin: '0px 0px -50px 0px' 
+    // Create particles continuously
+    setInterval(createParticle, 300);
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { 
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible'); 
+          entry.target.classList.add('visible');
         }
       });
     }, observerOptions);
-    
-    document.querySelectorAll('.section-card').forEach(card => observer.observe(card));
 
-    // PROJECTS SECTION
-    const projects = [
-      {
-        name: "shadow-dom-profile",
-        desc: "A modern profile template using Shadow DOM for true encapsulation.",
-        url: "https://github.com/AvinashNegi1999/shadow-dom-profile"
-      },
-      {
-        name: "productivity-stuffs",
-        desc: "Curated list and tools for boosting productivity in tech life.",
-        url: "https://github.com/AvinashNegi1999/productivity-stuffs"
-      },
-      {
-        name: "best-of-ai",
-        desc: "Hand-picked AI tools, resources, models, and playgrounds.",
-        url: "https://github.com/AvinashNegi1999/best-of-ai"
-      },
-      {
-        name: "100-Days-of-Python-Pro-Bootcamp",
-        desc: "My journey through the 100 Days of Python Pro Bootcamp.",
-        url: "https://github.com/AvinashNegi1999/100-Days-of-Python-Pro-Bootcamp"
-      }
-    ];
-    
-    const projectsGrid = document.getElementById('projects-grid');
-    if (projectsGrid) {
-      projects.forEach(p => {
-        const projectItem = document.createElement('div');
-        projectItem.className = 'project-item';
-        projectItem.innerHTML = `
-          <div class="project-title">${p.name.replace(/-/g, ' ')}</div>
-          <div class="project-desc">${p.desc}</div>
-          <a class="project-link" href="${p.url}" target="_blank" rel="noopener">View on GitHub →</a>
-        `;
-        projectsGrid.appendChild(projectItem);
-      });
-    }
-
-    // TESTIMONIAL SLIDER
-    const testimonials = document.querySelectorAll('.testimonial-item');
-    let ti = 0;
-    
-    function rotateTestimonials() {
-      testimonials[ti].classList.remove('active');
-      ti = (ti + 1) % testimonials.length;
-      testimonials[ti].classList.add('active');
-    }
-    
-    setInterval(rotateTestimonials, 4000);
-
-    // CONTACT FORM
-    document.getElementById('contact-form').onsubmit = function(e) {
-      e.preventDefault();
-      const messageEl = document.getElementById('form-message');
-      messageEl.textContent = "Sending...";
-      messageEl.style.color = "var(--primary)";
-      
-      // Simulate form submission
-      setTimeout(() => {
-        messageEl.textContent = "Thank you! I'll reply soon.";
-        messageEl.style.color = "var(--accent)";
-        this.reset();
-      }, 1500);
-    };
-
-    // PARALLAX BG
-    let ticking = false;
-    function updateParallax() {
-      const scrolled = window.pageYOffset;
-      const bg = document.querySelector('.bg-animation');
-      if (bg) {
-        bg.style.transform = `translateY(${scrolled * 0.3}px)`;
-      }
-      ticking = false;
-    }
-    
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
+    // Observe all section cards
+    document.querySelectorAll('.section-card').forEach(card => {
+      observer.observe(card);
     });
 
-    // SMOOTH SCROLLING FOR LINKS
+    // Smooth scrolling for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1097,15 +868,22 @@
       });
     });
 
-    // FALLBACK FOR BOOKS BACKGROUND IMAGE
-    const booksSection = document.querySelector('.books-card');
-    if (booksSection) {
-      const testImg = new Image();
-      testImg.onerror = function() {
-        booksSection.style.background = 'linear-gradient(135deg, rgba(180, 83, 9, 0.12), rgba(146, 64, 14, 0.08))';
-      };
-      testImg.src = 'https://i.postimg.cc/JhwL0Sh1/books-assortment-with-dark-background.jpg';
-    }
+    // Add interactive hover effects to tags
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('mouseenter', function() {
+        this.style.animation = 'none';
+        setTimeout(() => {
+          this.style.animation = '';
+        }, 10);
+      });
+    });
+
+    // Parallax effect for background
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const bg = document.querySelector('.bg-animation');
+      bg.style.transform = `translateY(${scrolled * 0.5}px)`;
+    });
   </script>
 </body>
 </html>
