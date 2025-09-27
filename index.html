@@ -7,11 +7,9 @@
   <meta name="description" content="Creative profile of Avinash Negi: Pythonist, automation enthusiast, chess learner, 3D explorer, and literature lover.">
   <meta property="og:title" content="Avinash Negi | Pythonist & Creator">
   <meta property="og:description" content="Portfolio of Avinash Negi: Pythonist, automation enthusiast, chess learner, 3D explorer, and literature lover.">
-  <meta property="og:image" content="https://i.pinimg.com/736x/cf/dd/ca/cfddcab153ffa57e5a167d73c0411ce3.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://avatars.githubusercontent.com/u/67118069?v=4"/>
   <style>
     :root {
       --primary: #6366f1;
@@ -193,21 +191,31 @@
       50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
     }
     
-    .profile-pic {
+    .profile-pic-fallback {
       width: 180px; 
       height: 180px; 
       border-radius: 50%; 
-      object-fit: cover;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       border: 3px solid var(--glass-border);
       box-shadow: 0 0 50px rgba(99, 102, 241, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
       position: relative; 
       z-index: 2;
       transition: all 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    .profile-pic:hover {
+    .profile-pic-fallback:hover {
       transform: scale(1.05);
       box-shadow: 0 0 80px rgba(99, 102, 241, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+    
+    .profile-initial {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     .hero-content .name {
@@ -420,16 +428,6 @@
       border: 1px solid rgba(236, 72, 153, 0.2);
     }
     
-    .chess-card { 
-      background: linear-gradient(135deg, rgba(0, 184, 148, 0.08), rgba(0, 150, 136, 0.05)); 
-      border: 1px solid rgba(0, 184, 148, 0.2);
-    }
-    
-    .github-stats-card { 
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(79, 70, 229, 0.05)); 
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
-    
     .contact-card { 
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.05)); 
       border: 1px solid rgba(16, 185, 129, 0.2);
@@ -437,8 +435,6 @@
     
     .projects-card .section-title { color: #06b6d4; }
     .testimonials-card .section-title { color: #ec4899; }
-    .chess-card .section-title { color: #00b894; }
-    .github-stats-card .section-title { color: #6366f1;}
     .contact-card .section-title { color: #10b981;}
 
     .bio { 
@@ -677,14 +673,6 @@
       font-style: normal;
     }
     
-    .github-stats-card img { 
-      width:100%; 
-      max-width:400px; 
-      border-radius:12px; 
-      display:block; 
-      margin:0 auto;
-    }
-    
     .contact-card form { 
       display: flex; 
       flex-direction: column; 
@@ -723,16 +711,6 @@
       color: var(--primary);
     }
     
-    .chess-embed {
-      width: 100%;
-      max-width: 400px;
-      height: 400px;
-      border-radius: 16px;
-      border: 2px solid var(--glass-border);
-      margin: 0 auto;
-      display: block;
-    }
-    
     @media (max-width: 768px) {
       .hero { padding: 1rem;}
       .section-card { padding: 1.5rem; margin-bottom: 1.5rem;}
@@ -740,8 +718,6 @@
       .social-links { gap: 0.5rem;}
       .social-link { padding: 10px 18px; font-size: 0.9rem;}
       .books-grid, .projects-grid { grid-template-columns: 1fr;}
-      .github-stats-card img { max-width:100%;}
-      .chess-embed { height: 300px; }
     }
   </style>
 </head>
@@ -754,7 +730,9 @@
   <section class="hero">
     <div class="profile-container">
       <div class="profile-glow"></div>
-      <img class="profile-pic" src="https://i.pinimg.com/736x/cf/dd/ca/cfddcab153ffa57e5a167d73c0411ce3.jpg" alt="Avinash Negi's Profile Pic" loading="lazy">
+      <div class="profile-pic-fallback">
+        <div class="profile-initial">AN</div>
+      </div>
     </div>
     <div class="hero-content">
       <div class="name">Avinash Negi</div>
@@ -915,16 +893,6 @@
           <div class="testimonial-author">— Mentor</div>
         </div>
       </div>
-    </section>
-    
-    <section class="section-card github-stats-card">
-      <div class="section-title">GitHub Stats</div>
-      <img src="https://github-readme-stats.vercel.app/api?username=AvinashNegi1999&show_icons=true&theme=tokyonight" alt="GitHub Stats" loading="lazy">
-    </section>
-    
-    <section class="section-card chess-card">
-      <div class="section-title">Chess Live Board</div>
-      <iframe class="chess-embed" src="https://lichess.org/training" frameborder="0" loading="lazy"></iframe>
     </section>
     
     <section class="section-card quote-card-section">
@@ -1129,13 +1097,15 @@
       });
     });
 
-    // ERROR HANDLING FOR IMAGES
-    document.querySelectorAll('img').forEach(img => {
-      img.onerror = function() {
-        this.style.display = 'none';
-        console.warn('Failed to load image:', this.src);
+    // FALLBACK FOR BOOKS BACKGROUND IMAGE
+    const booksSection = document.querySelector('.books-card');
+    if (booksSection) {
+      const testImg = new Image();
+      testImg.onerror = function() {
+        booksSection.style.background = 'linear-gradient(135deg, rgba(180, 83, 9, 0.12), rgba(146, 64, 14, 0.08))';
       };
-    });
+      testImg.src = 'https://i.postimg.cc/JhwL0Sh1/books-assortment-with-dark-background.jpg';
+    }
   </script>
 </body>
 </html>
